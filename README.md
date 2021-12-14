@@ -14,13 +14,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## <a href="https://tracker-2baa0.firebaseapp.com/Menu">Visit this site here!</a>
 <br>
 
-
-### CONTENTS OF THIS FILE
----------------------
- * Installation
- * Contributing
- * License
-
 ---
 
 ## 🧰 Toolbox
