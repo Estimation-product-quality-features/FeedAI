@@ -5,14 +5,11 @@ After milling, samples of the produced flour are evaluated on the particle size 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and Firebase to provide security and to help to build and run successfully the app.
 
 
-#TODO: Update links
+#TODO: Screenshot of the homepage instead.
 <br>
 <img src="https://github.com/JHamudi/Lehrprojekt_21-22/blob/main/public/images/img-9.jpg"/>
 <br>
 
-
-## <a href="https://tracker-2baa0.firebaseapp.com/Menu">Visit this site here!</a>
-<br>
 
 ---
 
