@@ -4,6 +4,13 @@ After milling, samples of the produced flour are evaluated on the particle size 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and Firebase to provide security and to help to build and run successfully the app.
 
+### CONTENTS OF THIS FILE
+---------------------
+ * Installation
+ * Contributing
+ * License
+
+
 #TODO: Update links
 <br>
 <img src="https://github.com/JHamudi/Lehrprojekt_21-22/blob/main/public/images/img-9.jpg"/>
@@ -26,6 +33,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 ---
+TODO:
+## Installation
+Execute the following commands in a shell to start the web app frontend on your local development environment.
+
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate. 
 
 
 ## License
