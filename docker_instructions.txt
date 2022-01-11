@@ -1,0 +1,18 @@
+#Source: https://mherman.org/blog/dockerizing-a-react-app/
+
+#Build 
+sudo docker build -t grain:dev .
+
+#Run
+sudo docker run \
+    -it \
+    --rm \
+    -v ${PWD}:/app \
+    -v /app/node_modules \
+    -p 3002:3000 \
+    -e CHOKIDAR_USEPOLLING=true \
+    grain:dev
+    
+
+Browse to    
+	http://localhost:3002/
