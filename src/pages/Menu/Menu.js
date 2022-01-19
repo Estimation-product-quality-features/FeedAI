@@ -1,25 +1,19 @@
 import React from "react";
-import app from "../../Firebase/firebase-config";
-//import './Menu.css';
-
 import '../../App.css';
-import Cards from '../../components/Cards';
 import HeroSection from '../../components/HeroSection';
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-//import Footer from '../Footer';
+import FeaturesTiles from "../../components/FeaturesTiles";
 
-//   <Footer /> 
+
 function Menu() {
   
   return (
     <>
-        <Navbar />
+      <Navbar />
       <HeroSection />
-      <Cards />
+      {/* <FeaturesTiles /> */}
       <Footer />
-
-     
     </>
   );
 }

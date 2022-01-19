@@ -11,7 +11,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import Menu from "./pages/Menu/Menu";
 import Projekt from "./components/projekt";
 import Contact from "./components/Contact";
-
+import Wiki from "./components/Wiki";
 // #### ROUTER #### 
 
 
@@ -42,6 +42,7 @@ var App = () => {
      <Route path ='/login' exact component={Login} />
      <Route exact path="/signup" component = {SignUp} />
      <Route path ="/projekt" exact component={Projekt} />
+     <Route path ='/Wiki' exact component={Wiki} />
      <Route path ="/Contact" exact component={Contact} />
      <PrivateRoute exact path="/" component = {Home} />
 

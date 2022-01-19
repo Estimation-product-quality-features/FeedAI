@@ -28,19 +28,13 @@ function Navbar() {
   }, []);
 
   window.addEventListener('resize', showButton);
-
-  if (App.currentUserName !== undefined) {
     return (
       <>
         <nav className='navbar'>
           <div className='navbar-container'>
-            <Link to='/Menu' className='navbar-logo' onClick={closeMobileMenu}>
-              MENU
-              <i className='fab fa-typo3' />
-            </Link>
-            <div className="bik">
+            <div className="uni">
                <a href="/menu">
-                  <img src="http://www.kipro-projekt.de/dateien/bik_logo.svg" width="auto" height = "60" alt="BIK">
+                  <img src="/images/Logo_University_Bremen.png" width="auto" height = "60" alt="Uni Bremen">
                   </img>
                  </a>  
                </div>
@@ -49,26 +43,8 @@ function Navbar() {
             </div>
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <li className='nav-item'>
-                <Link to='/add' className='nav-links' onClick={closeMobileMenu}>  
-                  Add
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link
-                  to='/add-Evaluation'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                 Image Detection 
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link
-                  to='/projekt' 
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Project
+                <Link to='/wiki' className='nav-links' onClick={closeMobileMenu}>  
+                  Wiki
                 </Link>
               </li>
            
@@ -94,55 +70,6 @@ function Navbar() {
         </nav>
       </>
     )
-  } else {
-  return (
-    <>
-      <nav className='navbar'>
-        <div className='navbar-container'>
-          <Link to='/Menu' className='navbar-logo' onClick={closeMobileMenu}>
-            MENU
-            <i className='fab fa-typo3' />
-          </Link>
-          <div className="bik">
-               <a href="/menu">
-                  <img src="http://www.kipro-projekt.de/dateien/bik_logo.svg" width="auto" height = "60" alt="BIK">
-                  </img>
-                 </a>  
-               </div>
-          <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-          </div>
-          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-            <li className='nav-item'>
-              <Link to='/menu' className='nav-links' onClick={closeMobileMenu}>
-                Menu
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link
-                to='/projekt'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Project
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link
-                to='/contact'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-          {/* {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>} */}
-        </div>
-      </nav>
-    </>
-  )
-  }
 }
 
 export default Navbar;

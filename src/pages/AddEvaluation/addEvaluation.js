@@ -25,9 +25,45 @@ import ModelMenu from '../../components/ModelMenu';
 import corn from './images/corn.jpeg';
 import wheat from './images/wheat.jpeg'; 
 import triticale from './images/triticale.jpeg'; 
-import rays from './images/rays.jpeg'; 
+import rays from './images/rays.jpeg';
+
+//tensorflow
+import * as tf from '@tensorflow/tfjs';
+tf.setBackend('webgl');
+
+async function load_rcnn_model() {
+  // It's possible to load the model locally or from a repo
+  // You can choose whatever IP and PORT you want in the "http://127.0.0.1:8080/model.json" just set it before in your https server
+  //const model = await loadGraphModel("http://127.0.0.1:8080/model.json");
+
+  const model = await tf.loadGraphModel('/models/rcnnjs/model.json');
+  return model;
+}
+
+async function load_ssd_model() {
+  const model = await tf.loadGraphModel('/models/ssdjs/model.json');
+  return model;
+}
 
 
+let classesDir = {
+  1: {
+      name: 'Corn',
+      id: 1,
+  },
+  2: {
+      name: 'Rays',
+      id: 2,
+  },
+  3: {
+    name: 'Triticale',
+    id: 3,
+  },
+  4: {
+    name: 'Wheat',
+    id: 4,
+  }
+}
 
 
 
@@ -51,10 +87,7 @@ const itemData = [
   
 ];
 
-// https://medium.com/@650egor/react-30-day-challenge-day-2-image-upload-preview-2d534f8eaaa
-// Read Input or (click on image and trigger action)
-// Create URL object and setState
-// Display Image automatically
+const rcnn = load_rcnn_model();
 
 
 class AddEvaluation extends React.Component {
@@ -68,6 +101,9 @@ class AddEvaluation extends React.Component {
     this.handleClickCard = this.handleClickCard.bind(this)
   }
 
+  /////////////////////////////////////////////////////////
+  // Handle changes
+  /////////////////////////////////////////////////////////
   handleInputChange(event) {
     this.setState({
       imgPred: URL.createObjectURL(event.target.files[0])
@@ -87,103 +123,6 @@ class AddEvaluation extends React.Component {
         {/* Some spacing  */}
         <br></br> <br></br> <br></br> <br></br>
         <br></br> <br></br> <br></br> <br></br>
-        {/* <Grid container spacing={12} direction="column">
-          <Grid container spacing={6} direction="row">
-            <Grid item xs='auto'>
-            <Card sx={{ maxwidth: 128, maxheight: 128}}>
-                        <CardMedia
-                          component="img"
-                          height="256"
-                          image={this.state.imgPred}
-                          alt='DisplayedImg'
-                          title='Source Image'
-                          />
-                      </Card>
-            </Grid>
-            <Grid item ml={4}>
-            <Card sx={{ maxwidth: 128, maxheight: 128}}>
-                        <CardMedia
-                          component="img"
-                          height="256"
-                          image={this.state.imgPred}
-                          alt='DisplayedImg'
-                          title='Source Image'
-                          />
-                      </Card>
-            </Grid>
-            <Grid item ml={4}>
-            <Card sx={{ maxwidth: 128, maxheight: 128}}>
-                        <CardMedia
-                          component="img"
-                          height="256"
-                          image={this.state.imgPred}
-                          alt='DisplayedImg'
-                          title='Source Image'
-                          />
-                      </Card>
-            </Grid>
-            <Grid item ml={4}>
-            <Card sx={{ maxwidth: 128, maxheight: 128}}>
-                        <CardMedia
-                          component="img"
-                          height="256"
-                          width="256"
-                          image={this.state.imgPred}
-                          alt='DisplayedImg'
-                          title='Source Image'
-                          />
-                      </Card>
-            </Grid>
-          </Grid>
-          <br></br> <br></br> <br></br> <br></br>
-          <br></br> <br></br> <br></br> <br></br>
-          <Grid container spacing={4} direction="row" align-items='center'>
-            <Grid item ml={4}>
-            <Card sx={{ maxwidth: 128, maxheight: 128}}>
-                        <CardMedia
-                          component="img"
-                          height="256"
-                          image={this.state.imgPred}
-                          alt='DisplayedImg'
-                          title='Source Image'
-                          />
-                      </Card>
-            </Grid>
-            <Grid item ml={4}>
-            <Card sx={{ maxwidth: 128, maxheight: 128}}>
-                        <CardMedia
-                          component="img"
-                          height="256"
-                          image={this.state.imgPred}
-                          alt='DisplayedImg'
-                          title='Source Image'
-                          />
-                      </Card>
-            </Grid>
-            <Grid item ml={4}>
-            <Card sx={{ maxwidth: 128, maxheight: 128}}>
-                        <CardMedia
-                          component="img"
-                          height="256"
-                          image={this.state.imgPred}
-                          alt='DisplayedImg'
-                          title='Source Image'
-                          />
-                      </Card>
-            </Grid>
-            <Grid item ml={4}>
-            <Card sx={{ maxwidth: 128, maxheight: 128}}>
-                        <CardMedia
-                          component="img"
-                          height="256"
-                          image={this.state.imgPred}
-                          alt='DisplayedImg'
-                          title='Source Image'
-                          />
-                      </Card>
-            </Grid>
-          </Grid>
-        </Grid> */}
 
         <Container>
           <Grid container spacing={6}>
@@ -231,12 +170,26 @@ class AddEvaluation extends React.Component {
             <Grid 
               container
               direction='row'
-              spacing={4}
+              spacing={2}
               lignItems="center"
               justifyContent="center"
               >
               <Grid item>
-                  <h1>Predicted Image</h1>
+                  <h1>Ground Truth</h1>
+                  <Card>
+                    <CardMedia
+                      component="img"
+                      height="256"
+                      width="256"
+                      image={this.state.imgPred}
+                      alt='PredImg'
+                      tile='Predicted Boundingboxes'
+                      />
+                  </Card>
+              </Grid>
+              <Grid item></Grid>
+              <Grid item>
+                  <h1>Model Detection</h1>
                   <Card>
                     <CardMedia
                       component="img"

@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  /* padding: 1rem; */
+  /* max-width: 1200px; */
+  margin: 30px auto;
+}
+
+.wiki{
+    display:flex;}
+
+.column-1 {
+  flex-shrink: 0; /* shrinks to 0 to apply 50% width*/
+  flex-basis: 48%; /* sets initial width to 50% */
+}
+.column-2 {
+  flex-shrink: 0; /* shrinks to 0 to apply 50% width*/
+  flex-basis: 48%; /* sets initial width to 50% */
+}
+
+.box {
+  background-color: rgb(165, 164, 179);
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid rgb(165, 164, 179);
+  margin: 1rem;
+  box-shadow: 1px 1px 1px #000;
+}

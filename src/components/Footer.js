@@ -35,14 +35,7 @@ function Footer() {
         </div>
       </div>
       <section className='social-media'>
-        <div className='social-media-wrap'>
-          <div className='footer-logo'>
-            <Link to='/Menu' className='social-logo'>
-              MENU
-              <i className='fab fa-typo3' />
-            </Link>
-          </div>
-      
+        <div className='social-media-wrap'>      
           <div className='social-icons'>
             <Link
               className='social-icon-link facebook'
