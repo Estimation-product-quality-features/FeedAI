@@ -49,7 +49,7 @@ After that open a browser of your choice and head to
 Note that the port 3002 can be changed.  
 The instructions can also be found and copied from the "docker_instructions.txt" file.  
 On windows omit the ```sudo``` in both commands.  
-Thats it, the app is up and running and adapts through react to changes in the code instantly.
+Thats it, the app is up and running and adapts to changes in the code instantly.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
