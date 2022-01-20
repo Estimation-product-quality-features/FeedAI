@@ -28,8 +28,27 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ---
 ## Installation
 
+The easiest way to run the app locally is to clone the repository and running the following docker commands.  
+For the initial run build the by running the following command in your shell:  
 
-Execute the following commands in a shell to start the web app frontend on your local development environment.
+> ```sudo docker build -t grain:dev .```
+
+Next run the container on using 
+> sudo docker run \\ \
+>       -it \\ \
+>       --rm \\ \
+>       -v ${PWD}:/app \\ \
+>       -v /app/node_modules \\ \
+>       -p 3002:3000 \\ \
+>       -e CHOKIDAR_USEPOLLING=true \\ \
+>       grain:dev
+
+After that open a browser of your choice and head to  
+> http://localhost:3002/
+
+Note that the port 3002 can be changed.  
+The instructions can also be found and copied from the "docker_instructions.txt" file.  
+On windows omit the ```sudo``` in both commands.  
 ...
 
 ## Contributing
