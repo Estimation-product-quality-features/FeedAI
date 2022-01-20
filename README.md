@@ -28,7 +28,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ---
 ## Installation
 
-The easiest way to run the app locally is to clone the repository and running the following docker commands.  
+The easiest way to run the app locally is to clone the repository and execute the following docker commands in the root folder and a shell of your choice.  
 For the initial run build the by running the following command in your shell:  
 
 > ```sudo docker build -t grain:dev .```
