@@ -5,7 +5,7 @@ sudo docker build -t grain:dev .
 
 #Run
 sudo docker run \
-    -it \
+    -itd \
     --rm \
     -v ${PWD}:/app \
     -v /app/node_modules \

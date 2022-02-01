@@ -17,6 +17,7 @@ RUN npm install
 RUN npm install react-scripts@3.4.1 -g
 RUN npm install @tensorflow/tfjs
 
+
 #Install peerDependencies
 #RUN npm cache clean --force
 #RUN npm install @tensorflow/tfjs-core@"^3.7.0"

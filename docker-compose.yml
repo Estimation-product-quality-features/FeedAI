@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+
+  grain:
+    container_name: grain
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - "5000:5000"
+      - "9005:9005"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
