@@ -9,14 +9,6 @@ import './Wiki.css';
 const Wiki = () => {
 
     return (
-//         <Grid container>
-//      <Grid item xs={6}> 
-//          ... 
-//      </Grid>
-//      <Grid item xs={6}>
-//          ...
-//      </Grid>
-// </Grid>
         <>
          <Navbar />
          <h1>Wiki</h1>
