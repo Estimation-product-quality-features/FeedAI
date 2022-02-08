@@ -1,10 +1,11 @@
 # Flour Quality Tracker in Batch Processing 🌾  
-# <a href="https://eisauge-877b5.firebaseapp.com/Menu">Visit this site here!</a>
-## An intuitive and helpful tracking tool for evaluating the quality on image data of the produced flour, in the context of compound feed industries.
+## [Visit this site here!](https://grain-90424.web.app/)
+
+### An intuitive and helpful tracking tool for evaluating the quality on image data of the produced flour, in the context of compound feed industries.
 The compound feed industry can product many feed mixtures up to many different ingredients. Ingredients as agricultural raw materials, such as maize and wheat, are to be processed in these industries. Under rapidly and strongly fluctuating input materials and changing recipes, the condition of a process has to be continually tuned by process operators to satisfy the quality requirements. Flour is one popular feed due to its balanced nutrional nature and availability in various forms, for instance, in pellets. The schredding of natural raw materials leads to the required product structure (flour), which is relevant for mixing and pelleting, and ultimative for the animal health.
 After milling, samples of the produced flour are evaluated on the particle size (quality specification) via machine-learning algorithms. In this repo, we developed a traker tool that automatically detect partially crushed and uncrushed grains on product images, so that engineers can subsequently use these results for a better adjustment of the mill parameters. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and Firebase to provide security and to help to build and run successfully the app.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and a Firebase running in a docker image to provide security and to help to build, run and deploy successfully the app.
 
 
 #TODO: Screenshot of the homepage instead.
@@ -33,7 +34,8 @@ For the initial run build the by running the following command in your shell:
 
 > ```sudo docker build -t grain:dev .```
 
-Next run the container on using 
+Next run the container on using  
+
 > sudo docker run \\ \
 >       -it \\ \
 >       --rm \\ \
@@ -48,8 +50,46 @@ After that open a browser of your choice and head to
 
 Note that the port 3002 can be changed.  
 The instructions can also be found and copied from the "docker_instructions.txt" file.  
-On **windows** omit the ```sudo``` in both commands.  
+On **windows** omit the ``` sudo ``` in both commands.  
 Thats it, the app is up and running and adapts to changes in the code instantly.
+
+### Deploying the App to firebase
+To deploy the app with firebase hosting another docker image is provided.
+
+To build the deployment container run
+
+> ```sudo docker build -f Dockerfile.prod -t grain:prod .```
+
+After the building process is finished the container can be spinned up using  
+
+> sudo docker run \\ \
+>       -itd \\ \
+>       --rm \\ \
+>       --name grain_prod \\ \
+>       -p 3002:3000 \\ \
+>       -p 9005:9005 \\ \
+>       grain:prod
+
+The 'd' in -itd detaches the container from the terminal.  
+The port 9005 is being exposed to be able to connect your firebase account using the firebase cli.  
+
+The ``` sudo docker exec command ``` enables the to run commands inside the running docker container. 
+
+> ``` sudo docker exec -it grain_prod firebase login ``` 
+
+Follow the displayed link and enter the credentials of the google account associated with firebase. The next step is to initialize the firebase hosting using  
+
+> ``` sudo docker exec -it grain_prod firebase init hosting ```
+
+Follow the instructions given by firebase and choose the corresponding firebase projekt you want to deploy to. Note that as "public directory" **build** has to be specified.  
+
+Finally deploy your webapp using 
+
+> ```sudo docker exec -it grain_prod firebase deploy --only hosting ```
+
+A url should be displayed where you can visit your site online.
+
+    
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

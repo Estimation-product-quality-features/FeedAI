@@ -10,9 +10,46 @@ sudo docker run \
     -v ${PWD}:/app \
     -v /app/node_modules \
     -p 3002:3000 \
+    --name grain \
+    -e CHOKIDAR_USEPOLLING=true \
+    grain:dev
+
+
+sudo docker run \
+    -it \
+    --rm \
+    -v ${PWD}:/app \
+    -v /app/node_modules \
+    -p 3002:3000 \
+    -p 9005:9005 \
     -e CHOKIDAR_USEPOLLING=true \
     grain:dev
     
 
 Browse to    
 	http://localhost:3002/
+	
+	
+#For production a different docker image will be used
+
+#Production build
+sudo docker build -f Dockerfile.prod -t grain:prod .
+
+sudo docker run \
+    -itd \
+    --rm \
+    --name grain_prod \
+    -p 3002:3000 \
+    -p 9005:9005 \
+    grain:prod
+
+#To deploy the production ready app run the following commands and follow the instructions in the terminal
+"sudo docker exec -it <container>" runs a command inside the docker
+
+sudo docker exec -it grain_prod firebase login
+
+sudo docker exec -it grain_prod firebase init hosting -> initialize the hosting by choosing the corresponding firebase projekt. Note that as "public directory" you have to enter "build"
+
+
+sudo docker exec -it grain_prod firebase deploy --only hosting
+
