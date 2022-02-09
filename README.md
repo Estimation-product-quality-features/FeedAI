@@ -81,14 +81,14 @@ Follow the displayed link and enter the credentials of the google account associ
 
 > ``` sudo docker exec -it grain_prod firebase init hosting ```
 
-Follow the instructions given by firebase and choose the corresponding firebase projekt you want to deploy to. Note that as "public directory" **build** has to be specified.  
+Follow the instructions given by firebase and choose the corresponding firebase projekt you want to deploy to. Note that as "public directory" **build** has to be specified. Additionally the page should be rewritten as single page.  
 
 Finally deploy your webapp using 
 
 > ```sudo docker exec -it grain_prod firebase deploy --only hosting ```
 
 A url should be displayed where you can visit your site online.
-
+Note that it can take a while untill the the website will be dislayed.
     
 
 ## Contributing

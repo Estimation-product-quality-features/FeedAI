@@ -48,8 +48,7 @@ sudo docker run \
 
 sudo docker exec -it grain_prod firebase login
 
-sudo docker exec -it grain_prod firebase init hosting -> initialize the hosting by choosing the corresponding firebase projekt. Note that as "public directory" you have to enter "build"
-
+sudo docker exec -it grain_prod firebase init hosting
 
 sudo docker exec -it grain_prod firebase deploy --only hosting
 
