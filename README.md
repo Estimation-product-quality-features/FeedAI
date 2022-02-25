@@ -8,9 +8,9 @@ After milling, samples of the produced flour are evaluated on the particle size 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and a Firebase running in a docker image to provide security and to help to build, run and deploy successfully the app.
 
 
-![img](https://media.giphy.com/media/MsSYDe7m75FUAPRM8P/giphy.gif)
+
 <br>
-<img src=""/>
+<img src="https://media.giphy.com/media/MsSYDe7m75FUAPRM8P/giphy.gif"/>
 <br>
 
 
