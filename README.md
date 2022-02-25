@@ -9,10 +9,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/MsSYDe7m75FUAPRM8P" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/MsSYDe7m75FUAPRM8P">via GIPHY</a></p>
 
 <br>
-<img src="https://media.giphy.com/media/MsSYDe7m75FUAPRM8P/giphy.gif"/>
+<img src="https://media.giphy.com/media/MsSYDe7m75FUAPRM8P/giphy-downsized-large.gif"/>
 <br>
 
 
