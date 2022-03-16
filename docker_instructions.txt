@@ -5,29 +5,25 @@ sudo docker build -t grain:dev .
 
 #Run
 sudo docker run \
-    -itd \
-    --rm \
-    -v ${PWD}:/app \
-    -v /app/node_modules \
-    -p 3002:3000 \
-    --name grain \
-    -e CHOKIDAR_USEPOLLING=true \
-    grain:dev
-
-
-sudo docker run \
     -it \
     --rm \
     -v ${PWD}:/app \
     -v /app/node_modules \
-    -p 3002:3000 \
-    -p 9005:9005 \
+    -p 3001:3000 \
     -e CHOKIDAR_USEPOLLING=true \
     grain:dev
-    
+
+sudo docker run \
+    -it \
+    --rm \
+    --mount ${PWD}:/app \
+    -p 3001:3000 \
+    --name grain_dev \
+    -e CHOKIDAR_USEPOLLING=true \
+    grain:dev
 
 Browse to    
-	http://localhost:3002/
+	http://localhost:3001/
 	
 	
 #For production a different docker image will be used
@@ -39,7 +35,7 @@ sudo docker run \
     -itd \
     --rm \
     --name grain_prod \
-    -p 3002:3000 \
+    -p 3005:3000 \
     -p 9005:9005 \
     grain:prod
 

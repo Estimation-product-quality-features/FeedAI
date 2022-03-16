@@ -5,52 +5,49 @@ import CardItem from './CardItem';
 
 import './Contact.css';
 
-const Contact = () => {
+// const Contact = () => {
+class Contact extends React.Component {
+    componentDidMount() {
+        window.scrollTo(0, 0)
+        }
+    render() {
+        return (
+            <>
+            <Navbar />
 
-    return (
-        
-     
-        <>
-         <Navbar />
-        
+            <h1>Contact List</h1>
+            <div className="contact">
 
-        <h1>Contact List</h1>
-        <div className="contact">
-
-        <div>
-            <h2 class="left">Student:</h2>
-                <ul>
-                    Name: Hannes Gelbhardt <br></br>
-                    Email: ha_ge@uni-bremen.de
-                </ul>
-
-            </div> 
-            <br></br>
             <div>
-            <h2 class="left">Supervisor:</h2>
-                <ul>
-                    Name: M.Sc. Maite Alvela <br></br>
-                    Email: malvela@uni-bremen.de
-                    <br></br>
-                    <br></br>
-                    Name: Prof. Dr.-Ing. Klaus-Dieter Thoben <br></br>
-                    Email: thoben@uni-bremen.de
-                    
+                <div>
+                <h2 class="left">Supervisor:</h2>
+                    <ul>
+                        Name: M.Sc. Maite Alvela <br></br>
+                        Email: malvela@uni-bremen.de
+                        <br></br>
+                        <br></br>
+                        Name: Prof. Dr.-Ing. Klaus-Dieter Thoben <br></br>
+                        Email: thoben@uni-bremen.de
+                    </ul>
+                </div>
+                <br></br>
+                <h2 class="left">Student:</h2>
+                    <ul>
+                        Name: Hannes Gelbhardt <br></br>
+                        Email: ha_ge@uni-bremen.de
+                    </ul>
+
+                </div> 
         
-                </ul>
-            </div> 
-       
-        </div>
+            </div>
+                
+            <Footer />
+        
+            </>
             
-        <Footer />
-      
-        </>
-        
-    );
-
-
-
-};
+        );
+    }
+}
 
 
 

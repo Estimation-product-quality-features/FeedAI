@@ -1,9 +1,7 @@
 import React from 'react';
-// import { View, Image, StyleSheet } from 'react-native';
 import './addEvaluation.css';
 
 import { Button } from '@material-ui/core';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Grid from '@material-ui/core/Grid';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -11,20 +9,13 @@ import Card from '@material-ui/core/Card';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import TextField from '@material-ui/core/TextField';
-//import Image from '@material-ui/core/Image';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
-import Paper from '@material-ui/core/Paper';
-import Index, { ObjectDetector } from "../../components/Index";
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import ModelMenu from '../../components/ModelMenu';
-
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
+
 
 // Image imports
 import corn from './images/corn.jpeg';
@@ -38,39 +29,44 @@ import rays2 from './images/rays2.jpeg';
 
 //tensorflow
 import * as tf from '@tensorflow/tfjs';
-import {loadGraphModel} from '@tensorflow/tfjs-converter';
+import loadGraphModel from '@tensorflow/tfjs-converter';
 tf.setBackend('webgl');
 
-let classesDir = {
-  1: {
-      name: 'Corn',
-      id: 1,
-  },
-  2: {
-      name: 'Rays',
-      id: 2,
-  },
-  3: {
-    name: 'Triticale',
-    id: 3,
-  },
-  4: {
-    name: 'Wheat',
-    id: 4,
-  }
-}
-
-async function load_rcnn_model() {
-  // It's possible to load the model locally or from a repo
-  // You can choose whatever IP and PORT you want in the "http://127.0.0.1:8080/model.json" just set it before in your https server
-  //const model = await loadGraphModel("http://127.0.0.1:8080/model.json");
-
-  const model = await loadGraphModel('/models/rcnn_js/model.json');
+async function load_rcnn_model_2() {
+  const model = await tf.loadGraphModel('/models/rcnn_js/model.json');
   return model;
 }
 
 async function load_ssd_model() {
   const model = await tf.loadGraphModel('/models/ssd_js/model.json');
+  // try {
+  //   // const model = await tf.loadLayersModel('/models/ssd_js/model.json');
+  //   const model = await tf.loadGraphModel('/models/ssd_js/model.json');
+  //   return model;
+  // } catch(e) {
+  //   console.log("SSD model could not be loaded")
+  // }
+  return model;
+}
+
+async function load_rcnn_model() {
+  //const model = await tf.loadGraphModel('/models/rcnn_js_2/model.json');
+    // const model = await tf.loadLayersModel('/models/rcnn_js_saved_model/model.json');
+  const model = await tf.loadGraphModel('/models/rcnn_js/model.json');
+
+    // var img = new Image();
+    // var src = document.getElementById('canvasTop');
+    // img.src = {img_url};
+    // console.log(img_url)
+    // img.id = "imgCanvas";
+    // img.width = 512 //has to be defined for tensorflow pixel
+    // img.height = 512
+    // const matrix = process_input(img)
+    // const prediction = model.predict(matrix);
+    // console.log(prediction)
+
+
+  
   return model;
 }
 
@@ -82,24 +78,25 @@ function process_input(img){
 
 function detectFrame(img_url, model) {
     var img = new Image();
+    var src = document.getElementById('canvasTop');
     img.src = {img_url};
-    console.log(img_url)
     img.id = "imgCanvas";
     img.width = 512 //has to be defined for tensorflow pixel
     img.height = 512 // ^^
     // img.style="display: none;"
     //needs to be appended somewhere else or otherwise be made visible
-    document.body.append(img);
+    src.appendChild(img);
 
-    Promise.all([model])
+    Promise.resolve(model)
         .then(values => {
           tf.engine().startScope();
           console.log(values[0])
+          // Promise.resolve(value[0]).then(
           values[0].executeAsync(process_input(img)).then(predictions => {
             // console.log(predictions)
             renderPredictions(predictions, img);
           tf.engine().endScope();
-        })
+        })//)
         .catch(error => {
           console.error(error);
         });
@@ -190,6 +187,24 @@ function renderPredictions(predictions) {
   });
 };
 
+let classesDir = {
+  1: {
+      name: 'Corn',
+      id: 1,
+  },
+  2: {
+      name: 'Rays',
+      id: 2,
+  },
+  3: {
+    name: 'Triticale',
+    id: 3,
+  },
+  4: {
+    name: 'Wheat',
+    id: 4,
+  }
+}
 
 const itemData = [
   {
@@ -242,7 +257,6 @@ class AddEvaluation extends React.Component {
     this.state= {
       imgPred: "images/pred_init.svg"
     };
-    var x = null
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleClickCard = this.handleClickCard.bind(this)
   }
@@ -267,12 +281,6 @@ class AddEvaluation extends React.Component {
   }
 
   handleMenuChange(event) {
-    // var modelName = event.target.value;
-    // if (modelName.match("SSD")) {
-    //     currentModel = load_ssd_model();
-    // } else if (modelName.match("RCNN")) {
-    //     currentModel = load_rcnn_model();;
-    // }
     currentModel = event.target.value;
   }
 
@@ -291,7 +299,10 @@ class AddEvaluation extends React.Component {
     })
   }
 
-
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+  
   render() {
     return (
         <div className= "Detection">
@@ -343,7 +354,7 @@ class AddEvaluation extends React.Component {
 
 
                   
-                  <h1>Model Detection</h1>
+                  <h1>Model detection</h1>
                   <Card>
                   <div id="wrapper">
                     <img src={this.state.imgPred} alt="predict image"/>
@@ -371,27 +382,23 @@ class AddEvaluation extends React.Component {
                     <Grid item ></Grid>
                     <Grid item ></Grid>
                     <Grid item ></Grid>
-                    <Grid item xs={1/2}>
+                    <Grid item xs={"auto"}>
                     <Box sx={{height:'auto', width: 'auto'}}>
-                      <FormControl fullWidth variant="filled" color='inherit'>
-                          <InputLabel id="modelInput">Select model</InputLabel>
-                          <Select
-                              labelId="modelLabel"
+                      <FormControl fullWidth variant="filled" color="primary">
+                          <NativeSelect
                               id="modelID"
-                              // value={currentModel}
-                              label="Model"
-                              // displayEmpty
-                              variant="filled"
-                              color='inherit'
+                              defaultValue="Model"
+                              color='primary'
                               onChange={this.handleMenuChange}
+                              style={{background: "#D3D3D3", value: "M"}}
                           >
-                          <MenuItem value={model_ssd}>SSD mobilenetV1</MenuItem>
-                          <MenuItem value={model_rcnn}>RCNN</MenuItem>
-                          </Select>
+                          <option value={model_ssd}>SSD mobilenetV1</option>
+                          <option value={model_rcnn}>RCNN</option>
+                          </NativeSelect>
                       </FormControl>
                   </Box>
                     </Grid>
-                    <Grid item xs={1/2}>
+                    <Grid item xs={"auto"}>
                       <Button
                        variant="contained"
                        color='inherit'

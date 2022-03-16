@@ -1,12 +1,12 @@
 body {
-  margin: 0;
   /* padding: 1rem; */
   /* max-width: 1200px; */
   margin: 30px auto;
 }
 
 .wiki{
-    display:flex;}
+  background-color: rgb(56, 104, 48);
+  display:flex;}
 
 .column-1 {
   flex-shrink: 0; /* shrinks to 0 to apply 50% width*/
@@ -18,10 +18,67 @@ body {
 }
 
 .box {
-  background-color: rgb(165, 164, 179);
   padding: 10px;
   border-radius: 12px;
   border: 2px solid rgb(165, 164, 179);
   margin: 1rem;
   box-shadow: 1px 1px 1px #000;
+}
+.mainRunner_ssd {
+  /* border: 1px solid #000; */
+}
+
+.img_ssd1 {
+  position: relative;
+  width: 25%;
+  height: 25%;
+  left: 100px;
+  z-index: 3;
+}
+
+.img_ssd2 {
+  position: relative;
+  z-index: 1;
+  width: 50%;
+  height: 50%;
+  top: -50px;
+  left: 30px;
+}
+.img_ssd3 {
+  position: relative;
+  width: 25%;
+  height: 25%;
+  z-index: 2;
+  left: -60px;
+}
+
+.mainRunner_rcnn {
+  margin-top: 80px;
+  /* border: 1px solid #000; */
+}
+
+.img_rcnn1 {
+  position: relative;
+  width: 25%;
+  height: 25%;
+  top: 40px;
+  left: 365px;
+  z-index: 3;
+}
+
+.img_rcnn2 {
+  position: relative;
+  z-index: 1;
+  width: 45%;
+  height: 45%;
+  top: 40px;
+  left: 200px;
+}
+.img_rcnn3 {
+  position: relative;
+  width: 25%;
+  height: 25%;
+  top: -145px;
+  z-index: 2;
+  left: -10px;
 }

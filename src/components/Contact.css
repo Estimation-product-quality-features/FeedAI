@@ -1,20 +1,21 @@
- .contact {
-   
-     margin-bottom: 150px;
-     margin-top: 40px;
-     display:block;
-     justify-content: center;
-     padding-bottom: 400px;
-     border: 1.5px solid rgba(0, 0, 0, 0.200);
-     margin-left: 2%;
-     margin-right: 2%;
- }
+body {
+  background-color: rgb(56, 104, 48);
+}
+.contact {
+  margin-bottom: 150px;
+  margin-top: 40px;
+  display:block;
+  justify-content: center;
+  padding-bottom: 400px;
+  border: 1.5px solid rgba(0, 0, 0, 0.200);
+  margin-left: 2%;
+  margin-right: 2%;
+}
 
- .left {
-   margin-left: -220px;
+.left {
+  margin-left: -220px;
   padding-left: 250px;
-   
- }
+}
 
 h3 {
   text-align: left;

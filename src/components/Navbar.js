@@ -31,43 +31,51 @@ function Navbar() {
     return (
       <>
         <nav className='navbar'>
-          <div className='navbar-container'>
-            <div className="uni">
+          <div className='navbar-container1'>
+          <div className="uni" >
                <a href="/menu">
                   <img src="/images/Logo_University_Bremen.png" width="auto" height = "60" alt="Uni Bremen">
                   </img>
-                 </a>  
-               </div>
+                </a>
+            </div>
             <div className='menu-icon' onClick={handleClick}>
               <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
             </div>
-            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-              <li className='nav-item'>
-                <Link to='/menu' className='nav-links' onClick={closeMobileMenu}>  
-                  Home
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link to='/add-Evaluation' className='nav-links' onClick={closeMobileMenu}>  
-                  Data Analysis
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link to='/wiki' className='nav-links' onClick={closeMobileMenu}>  
-                  Wiki
-                </Link>
-              </li>
-              <li className='nav-item'>
-              <Link
-                to='/contact'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Contact
-              </Link>
-            </li>
-            </ul>
           </div>
+          <div className='navbar-container2'>
+          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                  <li className='nav-item'>
+                    <Link to='/menu' className='nav-links' onClick={closeMobileMenu}>  
+                      Home
+                    </Link>
+                  </li>
+                  <li className='nav-item'>
+                    <Link to='/add-Evaluation' className='nav-links' onClick={closeMobileMenu}>  
+                      Data Analysis
+                    </Link>
+                  </li>
+                  <li className='nav-item'>
+                    <Link to='/live' className='nav-links' onClick={closeMobileMenu}>  
+                      Live Prodution
+                    </Link>
+                  </li>
+                  <li className='nav-item'>
+                    <Link to='/wiki' className='nav-links' onClick={closeMobileMenu}>  
+                      Wiki
+                    </Link>
+                  </li>
+                  <li className='nav-item'>
+                  <Link
+                    to='/contact'
+                    className='nav-links'
+                    onClick={closeMobileMenu}
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+          </div>
+          {/* nowrap */}
         </nav>
       </>
     )
