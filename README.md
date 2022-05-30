@@ -88,7 +88,7 @@ Finally deploy your webapp using
 > ```sudo docker exec -it grain_prod firebase deploy --only hosting ```
 
 A url should be displayed where you can visit your site online.
-Note that it can take a while untill the the website will be dislayed.
+Note that it can take a while untill the website will be dislayed.
     
 
 ## Contributing
