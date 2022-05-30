@@ -73,7 +73,7 @@ After the building process is finished the container can be spinned up using
 The 'd' in -itd detaches the container from the terminal.  
 The port 9005 is being exposed to be able to connect your firebase account using the firebase cli.  
 
-The ``` sudo docker exec command ``` enables the to run commands inside the running docker container. 
+The ``` sudo docker exec command ``` enables to run commands inside the running docker container. 
 
 > ``` sudo docker exec -it grain_prod firebase login ``` 
 
