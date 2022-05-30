@@ -16,7 +16,6 @@ import Footer from '../../components/Footer';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
-
 // Image imports
 import corn from './images/corn.jpeg';
 import corn2 from './images/corn2.jpeg';
@@ -29,85 +28,82 @@ import rays2 from './images/rays2.jpeg';
 
 //tensorflow
 import * as tf from '@tensorflow/tfjs';
-import loadGraphModel from '@tensorflow/tfjs-converter';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 tf.setBackend('webgl');
 
-async function load_rcnn_model_2() {
-  const model = await tf.loadGraphModel('/models/rcnn_js/model.json');
-  return model;
+let classesDir = {
+  1: {
+      name: 'Corn',
+      id: 1,
+  },
+  2: {
+      name: 'Rays',
+      id: 2,
+  },
+  3: {
+    name: 'Triticale',
+    id: 3,
+  },
+  4: {
+    name: 'Wheat',
+    id: 4,
+  }
 }
 
 async function load_ssd_model() {
+  await tf.ready();
   const model = await tf.loadGraphModel('/models/ssd_js/model.json');
-  // try {
-  //   // const model = await tf.loadLayersModel('/models/ssd_js/model.json');
-  //   const model = await tf.loadGraphModel('/models/ssd_js/model.json');
-  //   return model;
-  // } catch(e) {
-  //   console.log("SSD model could not be loaded")
-  // }
   return model;
 }
 
 async function load_rcnn_model() {
-  //const model = await tf.loadGraphModel('/models/rcnn_js_2/model.json');
-    // const model = await tf.loadLayersModel('/models/rcnn_js_saved_model/model.json');
+  await tf.ready();
+  // rcnn does not work yet
   const model = await tf.loadGraphModel('/models/rcnn_js/model.json');
-
-    // var img = new Image();
-    // var src = document.getElementById('canvasTop');
-    // img.src = {img_url};
-    // console.log(img_url)
-    // img.id = "imgCanvas";
-    // img.width = 512 //has to be defined for tensorflow pixel
-    // img.height = 512
-    // const matrix = process_input(img)
-    // const prediction = model.predict(matrix);
-    // console.log(prediction)
-
-
-  
+  // const model = await tf.loadGraphModel('/models/ssd_js/model.json');
   return model;
 }
 
 function process_input(img){
   const tfimg = tf.browser.fromPixels(img).toInt();
-  const expandedimg = tfimg.transpose([0,1,2]).expandDims();
+  const expandedimg = tfimg.expandDims(); //.transpose([0,1,2])
   return expandedimg;
 };
 
-function detectFrame(img_url, model) {
-    var img = new Image();
-    var src = document.getElementById('canvasTop');
-    img.src = {img_url};
-    img.id = "imgCanvas";
-    img.width = 512 //has to be defined for tensorflow pixel
-    img.height = 512 // ^^
-    // img.style="display: none;"
-    //needs to be appended somewhere else or otherwise be made visible
-    src.appendChild(img);
+async function detectFrame(img_url, model) {
+  var img = new Image();
+  var src = document.getElementById('canvasTop');
+  img.src = img_url;
+  img.id = "imgCanvas";
+  const imgWidth = 512
+  const imgHeight = 512
+  img.width = imgWidth //has to be defined for tensorflow pixel
+  img.height = imgHeight // ^^
 
-    Promise.resolve(model)
-        .then(values => {
-          tf.engine().startScope();
-          console.log(values[0])
-          // Promise.resolve(value[0]).then(
-          values[0].executeAsync(process_input(img)).then(predictions => {
-            // console.log(predictions)
-            renderPredictions(predictions, img);
-          tf.engine().endScope();
-        })//)
-        .catch(error => {
-          console.error(error);
-        });
+  //needs to be appended somewhere else or otherwise be made visible
+  src.appendChild(img);
 
+
+  Promise.all([model])
+    .then(values => {
+      tf.engine().startScope();
+      values[0].executeAsync(process_input(img)).then(predictions => {
+      renderPredictions(predictions, img);
+      tf.engine().endScope();
+    })
+    .catch(error => {
+      console.error(error);
+    });
   });
 };
 
 function buildDetectedObjects(scores, threshold, boxes, classes, classesDir) {
   const detectionObjects = []
   var imgCanvas = document.getElementById('imgCanvas');
+  // console.log("Hallo");
   scores[0].forEach((score, i) => {
+
     if (score > threshold) {
       const bbox = [];
       const minY = boxes[0][i][0] * imgCanvas.offsetHeight;
@@ -118,10 +114,9 @@ function buildDetectedObjects(scores, threshold, boxes, classes, classesDir) {
       bbox[1] = minY;
       bbox[2] = maxX - minX;
       bbox[3] = maxY - minY;
-      console.log(i)
       detectionObjects.push({
-        class: classes[i],
-        label: classesDir[classes[i]].name,
+        class: classes[0][i],
+        label: classesDir[classes[0][i]].name,
         score: score.toFixed(4),
         bbox: bbox
       })
@@ -141,25 +136,28 @@ function renderPredictions(predictions) {
     ctx.font = font;
     ctx.textBaseline = "top";
 
+    
     //Getting predictions
-    //detection_boxes, detection_classes, detection_scores, num_detections
-    const boxes = predictions[0].arraySync();
-    const classes = predictions[1].dataSync();
-    const scores = predictions[2].arraySync();
-    const num = predictions[3].arraySync();
+    const boxes = predictions[2].arraySync();
+    const num = predictions[1].dataSync();
+    const scores = predictions[3].arraySync();
+    const classes = tf.tensor(predictions[0].arraySync()).arraySync();
 
-    console.log("BoxesNumber of detections")
-    console.log(boxes)
-    console.log("Classes")
-    console.log(classes)
-    console.log("Scores")
-    console.log(scores)
-    console.log("Number of detections")
-    console.log(num)
+    // console.log("Boxes Number of detections")
+    // console.log(boxes)
+    // console.log("Classes")
+    // console.log(classes)
+    // console.log("Scores")
+    // console.log(scores)
+    // console.log("Number of detections")
+    // console.log(num)
+
     const detections = buildDetectedObjects(scores, threshold,
                                     boxes, classes, classesDir);
 
+    
     detections.forEach(item => {
+      // console.log(item)
       const x = item['bbox'][0];
       const y = item['bbox'][1];
       const width = item['bbox'][2];
@@ -186,25 +184,6 @@ function renderPredictions(predictions) {
     ctx.fillText(item["label"] + " " + (100*item["score"]).toFixed(2) + "%", x, y);
   });
 };
-
-let classesDir = {
-  1: {
-      name: 'Corn',
-      id: 1,
-  },
-  2: {
-      name: 'Rays',
-      id: 2,
-  },
-  3: {
-    name: 'Triticale',
-    id: 3,
-  },
-  4: {
-    name: 'Wheat',
-    id: 4,
-  }
-}
 
 const itemData = [
   {
@@ -243,7 +222,7 @@ const itemData = [
 ];
 
 // the Threshhold for the detected objects, the user could also choose it
-var threshold = 0.005;
+var threshold = 0.5;
 const model_ssd = load_ssd_model();
 const model_rcnn = load_rcnn_model();
 var currentModel = load_ssd_model();
@@ -393,10 +372,10 @@ class AddEvaluation extends React.Component {
                               style={{background: "#D3D3D3", value: "M"}}
                           >
                           <option value={model_ssd}>SSD mobilenetV1</option>
-                          <option value={model_rcnn}>RCNN</option>
+                          {/* <option value={model_rcnn}>RCNN</option> */}
                           </NativeSelect>
                       </FormControl>
-                  </Box>
+                    </Box>
                     </Grid>
                     <Grid item xs={"auto"}>
                       <Button

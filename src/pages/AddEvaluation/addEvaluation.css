@@ -8,6 +8,11 @@
     padding-left: 38%;
 }
 
+image {
+    width: 25%;
+    height: auto;
+  }
+
 h1{
     color: rgb(174, 189, 209);
     margin: 20px 10px 0px;

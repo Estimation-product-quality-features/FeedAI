@@ -13,6 +13,7 @@ sudo docker run \
     -e CHOKIDAR_USEPOLLING=true \
     grain:dev
 
+# Geht nicht
 sudo docker run \
     -it \
     --rm \
