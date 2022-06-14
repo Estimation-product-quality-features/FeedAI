@@ -73,7 +73,7 @@ After the building process is finished the container can be spinned up using
 The 'd' in -itd detaches the container from the terminal.  
 The port 9005 is being exposed to be able to connect your firebase account using the firebase cli.  
 
-The ``` sudo docker exec command ``` enables the to run commands inside the running docker container. 
+The ``` sudo docker exec command ``` enables to run commands inside the running docker container. 
 
 > ``` sudo docker exec -it grain_prod firebase login ``` 
 
@@ -81,14 +81,14 @@ Follow the displayed link and enter the credentials of the google account associ
 
 > ``` sudo docker exec -it grain_prod firebase init hosting ```
 
-Follow the instructions given by firebase and choose the corresponding firebase projekt you want to deploy to. Note that as "public directory" **build** has to be specified. Additionally the page should be rewritten as single page.  
+Follow the instructions given by firebase and choose the corresponding firebase projekt you want to deploy to. Note that as "public directory" **build** has to be specified. Additionally the page should be rewritten as single page. When ask to overwrite existing files the answer is "No".  
 
 Finally deploy your webapp using 
 
 > ```sudo docker exec -it grain_prod firebase deploy --only hosting ```
 
 A url should be displayed where you can visit your site online.
-Note that it can take a while untill the the website will be dislayed.
+Note that it can take a while untill the website will be dislayed.
     
 
 ## Contributing
