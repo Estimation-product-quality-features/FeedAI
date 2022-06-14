@@ -28,6 +28,7 @@ import rays2 from './images/rays2.jpeg';
 
 //tensorflow
 import * as tf from '@tensorflow/tfjs';
+import {loadGraphModel} from '@tensorflow/tfjs-converter';
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 tf.setBackend('webgl');
@@ -53,16 +54,23 @@ let classesDir = {
 
 async function load_ssd_model() {
   await tf.ready();
-  const model = await tf.loadGraphModel('/models/ssd_js/model.json');
-  return model;
+  try {
+    const model = await loadGraphModel('/models/ssd_js/model.json');
+    return model;
+  } catch(e) {
+    console.log("the SSD model could not be loaded")
+  }
 }
 
 async function load_rcnn_model() {
   await tf.ready();
   // rcnn does not work yet
-  const model = await tf.loadGraphModel('/models/rcnn_js/model.json');
-  // const model = await tf.loadGraphModel('/models/ssd_js/model.json');
-  return model;
+  try {
+    const model = await loadGraphModel('/models/rcnn_js/model.json');
+    return model;
+  } catch(e) {
+    console.log("the RCNN model could not be loaded")
+  }
 }
 
 function process_input(img){
@@ -72,6 +80,8 @@ function process_input(img){
 };
 
 async function detectFrame(img_url, model) {
+  await tf.ready();
+
   var img = new Image();
   var src = document.getElementById('canvasTop');
   img.src = img_url;
@@ -83,19 +93,39 @@ async function detectFrame(img_url, model) {
 
   //needs to be appended somewhere else or otherwise be made visible
   src.appendChild(img);
+  const readyfied1 = process_input(img)
+  console.log(`Image shape : (${readyfied1.shape})`)
 
+  const readyfied2 = tf.expandDims(tf.browser
+    .fromPixels(img)
+    .toInt(), 0).asType("int32")
+  console.log(`Image shape : (${readyfied2.shape})`)
+  
 
-  Promise.all([model])
-    .then(values => {
-      tf.engine().startScope();
-      values[0].executeAsync(process_input(img)).then(predictions => {
-      renderPredictions(predictions, img);
-      tf.engine().endScope();
-    })
-    .catch(error => {
-      console.error(error);
-    });
-  });
+  const model_test = await tf.loadGraphModel('/models/rcnn_js/model.json');
+  console.log(`Hello`)
+
+  try {
+    const results1 = await model_test.executeAsync(readyfied1).catch((err) => { console.error(err); });
+    //console.log(`Result 1: (${results1})`)
+  } catch(e) {
+    console.log("Prediction not working")
+    console.log(e)
+  }
+
+  tf.dispose([model, model_test, readyfied1, readyfied2]);
+
+  // Promise.all([model])
+  //   .then(values => {
+  //     tf.engine().startScope();
+  //     values[0].executeAsync(process_input(img)).then(predictions => {
+  //     renderPredictions(predictions, img);
+  //     tf.engine().endScope();
+  //   })
+  //   .catch(error => {
+  //     console.error(error);
+  //   });
+  // });
 };
 
 function buildDetectedObjects(scores, threshold, boxes, classes, classesDir) {

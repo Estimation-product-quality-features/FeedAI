@@ -34,7 +34,7 @@ function Navbar() {
           <div className='navbar-container1'>
           <div className="uni" >
                <a href="/menu">
-                  <img src="/images/Logo_University_Bremen.png" width="auto" height = "60" alt="Uni Bremen">
+                  <img src="/images/logo_small_ub_2021.png" width="auto" height = "60" alt="Uni Bremen">
                   </img>
                 </a>
             </div>

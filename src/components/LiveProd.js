@@ -14,6 +14,7 @@ class LiveProd extends React.Component {
         return (
             <>
             <Navbar />
+            <div></div>
             <div class="vid-container">
             <video src='/videos/grains_website.mp4'
                 autoPlay
@@ -22,6 +23,7 @@ class LiveProd extends React.Component {
                 height="1080"
             />
             </div>
+            <div></div>
             <Footer />
             </>
             
