@@ -38,6 +38,7 @@ sudo docker run \
     --name grain_prod \
     -p 3005:3000 \
     -p 9005:9005 \
+    -p 5000:5000 \
     grain:prod
 
 #To deploy the production ready app run the following commands and follow the instructions in the terminal
