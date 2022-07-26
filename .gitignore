@@ -128,5 +128,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Visual Code
+.vscode/
+
+#Node
+node_modules/
+
 # docker
 
