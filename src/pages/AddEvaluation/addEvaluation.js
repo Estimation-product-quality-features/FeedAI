@@ -49,11 +49,12 @@ let classesDir = {
   4: {
     name: 'Wheat',
     id: 4,
-  }
+  },
 }
 
 async function load_ssd_model() {
   await tf.ready();
+  model_name = "ssd"
   try {
     const model = await loadGraphModel('/models/ssd_js/model.json');
     return model;
@@ -63,8 +64,8 @@ async function load_ssd_model() {
 }
 
 async function load_rcnn_model() {
+  model_name = "frcnn"
   await tf.ready();
-  // rcnn does not work yet
   try {
     const model = await loadGraphModel('/models/rcnn_js/model.json');
     return model;
@@ -75,13 +76,12 @@ async function load_rcnn_model() {
 
 function process_input(img){
   const tfimg = tf.browser.fromPixels(img).toInt();
-  const expandedimg = tfimg.expandDims(); //.transpose([0,1,2])
+  const expandedimg = tfimg.expandDims();
   return expandedimg;
 };
 
 async function detectFrame(img_url, model) {
   await tf.ready();
-
   var img = new Image();
   var src = document.getElementById('canvasTop');
   img.src = img_url;
@@ -93,45 +93,23 @@ async function detectFrame(img_url, model) {
 
   //needs to be appended somewhere else or otherwise be made visible
   src.appendChild(img);
-  const readyfied1 = process_input(img)
-  console.log(`Image shape : (${readyfied1.shape})`)
 
-  const readyfied2 = tf.expandDims(tf.browser
-    .fromPixels(img)
-    .toInt(), 0).asType("int32")
-  console.log(`Image shape : (${readyfied2.shape})`)
-  
-
-  const model_test = await tf.loadGraphModel('/models/rcnn_js/model.json');
-  console.log(`Hello`)
-
-  try {
-    const results1 = await model_test.executeAsync(readyfied1).catch((err) => { console.error(err); });
-    //console.log(`Result 1: (${results1})`)
-  } catch(e) {
-    console.log("Prediction not working")
-    console.log(e)
-  }
-
-  tf.dispose([model, model_test, readyfied1, readyfied2]);
-
-  // Promise.all([model])
-  //   .then(values => {
-  //     tf.engine().startScope();
-  //     values[0].executeAsync(process_input(img)).then(predictions => {
-  //     renderPredictions(predictions, img);
-  //     tf.engine().endScope();
-  //   })
-  //   .catch(error => {
-  //     console.error(error);
-  //   });
-  // });
+  Promise.all([model])
+    .then(values => {
+      tf.engine().startScope();
+      values[0].executeAsync(process_input(img)).then(predictions => {
+      renderPredictions(predictions);
+      tf.engine().endScope();
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  });
 };
 
 function buildDetectedObjects(scores, threshold, boxes, classes, classesDir) {
   const detectionObjects = []
   var imgCanvas = document.getElementById('imgCanvas');
-  // console.log("Hallo");
   scores[0].forEach((score, i) => {
 
     if (score > threshold) {
@@ -157,7 +135,6 @@ function buildDetectedObjects(scores, threshold, boxes, classes, classesDir) {
 
 
 function renderPredictions(predictions) {
-
     const ctx = canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
@@ -166,28 +143,27 @@ function renderPredictions(predictions) {
     ctx.font = font;
     ctx.textBaseline = "top";
 
-    
-    //Getting predictions
-    const boxes = predictions[2].arraySync();
-    const num = predictions[1].dataSync();
-    const scores = predictions[3].arraySync();
-    const classes = tf.tensor(predictions[0].arraySync()).arraySync();
 
-    // console.log("Boxes Number of detections")
-    // console.log(boxes)
-    // console.log("Classes")
-    // console.log(classes)
-    // console.log("Scores")
-    // console.log(scores)
-    // console.log("Number of detections")
-    // console.log(num)
+    //Getting predictions
+    // FRCNN
+    var boxes = predictions[3].arraySync();
+    var num = predictions[1].dataSync();
+    var scores = predictions[2].arraySync();
+    var classes = tf.tensor(predictions[0].arraySync()).arraySync();
+
+    // If SSD-model change ordering of prediction
+    if (model_name === "ssd") {
+      boxes = predictions[2].arraySync();
+      num = predictions[1].dataSync();
+      scores = predictions[3].arraySync();
+      classes = tf.tensor(predictions[0].arraySync()).arraySync();
+    }
 
     const detections = buildDetectedObjects(scores, threshold,
                                     boxes, classes, classesDir);
 
     
     detections.forEach(item => {
-      // console.log(item)
       const x = item['bbox'][0];
       const y = item['bbox'][1];
       const width = item['bbox'][2];
@@ -215,6 +191,8 @@ function renderPredictions(predictions) {
   });
 };
 
+
+// List of images
 const itemData = [
   {
     img: corn,
@@ -253,8 +231,9 @@ const itemData = [
 
 // the Threshhold for the detected objects, the user could also choose it
 var threshold = 0.5;
-const model_ssd = load_ssd_model();
-const model_rcnn = load_rcnn_model();
+
+// Load the ssd model as initial model
+var model_name = "ssd";
 var currentModel = load_ssd_model();
 
 // Canvas to draw on
@@ -290,7 +269,13 @@ class AddEvaluation extends React.Component {
   }
 
   handleMenuChange(event) {
-    currentModel = event.target.value;
+    if (event.target.value === "ssd") {
+      
+      currentModel = load_ssd_model();
+    } else {
+      currentModel = load_rcnn_model();
+    }
+    //event.target.value;
   }
 
   handleClickCard2(imgSrc) {
@@ -308,6 +293,7 @@ class AddEvaluation extends React.Component {
     })
   }
 
+  // Scroll to the original position after page entering
   componentDidMount() {
     window.scrollTo(0, 0)
   }
@@ -396,13 +382,13 @@ class AddEvaluation extends React.Component {
                       <FormControl fullWidth variant="filled" color="primary">
                           <NativeSelect
                               id="modelID"
-                              defaultValue="Model"
+                              defaultValue={"model"}
                               color='primary'
                               onChange={this.handleMenuChange}
                               style={{background: "#D3D3D3", value: "M"}}
                           >
-                          <option value={model_ssd}>SSD mobilenetV1</option>
-                          {/* <option value={model_rcnn}>RCNN</option> */}
+                          <option value="ssd">SSD MobileNetV1</option>
+                          <option value="frcnn">FRCNN</option>
                           </NativeSelect>
                       </FormControl>
                     </Box>
