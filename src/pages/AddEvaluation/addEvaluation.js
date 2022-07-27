@@ -198,8 +198,16 @@ const itemData = [
     img: corn,
     title: 'Corn',
   },
+  {
+    img: corn2,
+    title: 'Corn',
+  },
     {
     img: wheat,
+    title: 'Wheat',
+  },
+  {
+    img: wheat2,
     title: 'Wheat',
   },
   {
@@ -207,20 +215,12 @@ const itemData = [
     title: 'Triticale',
   },
   {
-    img: rays,
-    title: 'Rays',
-  },
-  {
-    img: corn2,
-    title: 'Corn',
-  },
-  {
-    img: wheat2,
-    title: 'Wheat',
-  },
-  {
     img: triticale2,
     title: 'Triticale',
+  },
+  {
+    img: rays,
+    title: 'Rays',
   },
   {
     img: rays2,
@@ -270,7 +270,6 @@ class AddEvaluation extends React.Component {
 
   handleMenuChange(event) {
     if (event.target.value === "ssd") {
-      
       currentModel = load_ssd_model();
     } else {
       currentModel = load_rcnn_model();
@@ -308,48 +307,54 @@ class AddEvaluation extends React.Component {
 
         <Container>
           <Grid container spacing={6}>
-            <Grid 
-              container
-              direction='row'
-              spacing={2}
-              lignItems="center"
-              justifyContent="center"
-              >
-              <Grid item>
-              <h1>Select an image</h1>
-                <ImageList sx={{heigth:128, width:128}} cols={4} rowHeight={256}>
-                    {itemData.map((item) => (
-                      <ImageListItem key={item.img}>
-                            <CardActionArea>
-                              <CardMedia
-                                component="img"
-                                src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                                srcSet={item.img}
-                                alt={item.title}
-                                title={item.title}
-                                height='256'
-                                onClick={() => this.handleClickCard(item.img)}
-                                />
-                            </CardActionArea>
-                      </ImageListItem>
-                    ))}
-                  </ImageList>
-              </Grid>
-           </Grid>
-            
-
-            <Grid 
-              container
-              direction='row'
-              spacing={2}
-              lignItems="center"
-              justifyContent="center"
-              >
-              <Grid item>
-
-
-                  
+              <div style={{display: 'flex', gap: '60px'}}>
+                <div>
+                  <h1>Select an image</h1>
+                  <ImageList sx={{heigth:128, width:128}} cols={2} rowHeight={256}>
+                      {itemData.map((item) => (
+                        <ImageListItem key={item.img}>
+                              <CardActionArea>
+                                <CardMedia
+                                  component="img"
+                                  src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                                  srcSet={item.img}
+                                  alt={item.title}
+                                  title={item.title}
+                                  height='256'
+                                  onClick={() => this.handleClickCard(item.img)}
+                                  />
+                              </CardActionArea>
+                        </ImageListItem>
+                      ))}
+                    </ImageList>
+                </div>
+              <div>
                   <h1>Model detection</h1>
+                  <br></br>
+                  <div style={{display: 'flex', gap: '30px', justifyContent: 'center'}}>
+                  <Box sx={{height:'auto', width: '45%'}}>
+                      <FormControl fullWidth variant="filled" color="primary">
+                          <NativeSelect
+                              id="modelID"
+                              defaultValue={"model"}
+                              color='primary'
+                              onChange={this.handleMenuChange}
+                              style={{background: "#D3D3D3", value: "M", height: '50px'}}
+                          >
+                          <option value="ssd">SSD MobileNetV1</option>
+                          <option value="frcnn">FRCNN</option>
+                          </NativeSelect>
+                      </FormControl>
+                      </Box>
+                      <Button
+                       variant="contained"
+                       color='inherit'
+                       size='large'
+                       onClick={() => detectFrame(this.state.imgPred, currentModel)}>
+                      Predict Image
+                      </Button>
+                  </div>
+                  <br></br> <br></br>
                   <Card>
                   <div id="wrapper">
                     <img src={this.state.imgPred} alt="predict image"/>
@@ -361,52 +366,17 @@ class AddEvaluation extends React.Component {
                         height="512"
                       />
                  </div>
-
                   </Card>
+
+                  <br></br> <br></br>
+                 <div style={{display: 'flex', justifyContent: 'center'}}>
+                  <label class="custom-file-upload">
                   <input type="file" onChange={this.handleInputChange}/>
-              </Grid>
-              <Grid item>
-                <Grid 
-                  container
-                  direction='column'
-                  spacing={4}
-                  lignItems="center"
-                  justifyContent="center"
-                  >
-                    <Grid item ></Grid>
-                    <Grid item ></Grid>
-                    <Grid item ></Grid>
-                    <Grid item ></Grid>
-                    <Grid item xs={"auto"}>
-                    <Box sx={{height:'auto', width: 'auto'}}>
-                      <FormControl fullWidth variant="filled" color="primary">
-                          <NativeSelect
-                              id="modelID"
-                              defaultValue={"model"}
-                              color='primary'
-                              onChange={this.handleMenuChange}
-                              style={{background: "#D3D3D3", value: "M"}}
-                          >
-                          <option value="ssd">SSD MobileNetV1</option>
-                          <option value="frcnn">FRCNN</option>
-                          </NativeSelect>
-                      </FormControl>
-                    </Box>
-                    </Grid>
-                    <Grid item xs={"auto"}>
-                      <Button
-                       variant="contained"
-                       color='inherit'
-                       size='large'
-                       onClick={() => detectFrame(this.state.imgPred, currentModel)}>
-                      Predict Image
-                      </Button>
-                    </Grid>
-
-
-                </Grid>
-              </Grid>
-            </Grid>
+                     <i class="fa fa-cloud-upload"></i> Upload image
+                  </label>
+                  </div>
+                </div>
+           </div>
           </Grid>
         </Container>
         {/* Some spacing  */}
