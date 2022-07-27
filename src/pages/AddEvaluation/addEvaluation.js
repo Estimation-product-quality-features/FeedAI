@@ -342,7 +342,7 @@ class AddEvaluation extends React.Component {
                               style={{background: "#D3D3D3", value: "M", height: '50px'}}
                           >
                           <option value="ssd">SSD MobileNetV1</option>
-                          <option value="frcnn">FRCNN</option>
+                          <option value="frcnn">Faster RCNN</option>
                           </NativeSelect>
                       </FormControl>
                       </Box>
@@ -351,7 +351,7 @@ class AddEvaluation extends React.Component {
                        color='inherit'
                        size='large'
                        onClick={() => detectFrame(this.state.imgPred, currentModel)}>
-                      Predict Image
+                      Predict image
                       </Button>
                   </div>
                   <br></br> <br></br>
@@ -372,7 +372,7 @@ class AddEvaluation extends React.Component {
                  <div style={{display: 'flex', justifyContent: 'center'}}>
                   <label class="custom-file-upload">
                   <input type="file" onChange={this.handleInputChange}/>
-                     <i class="fa fa-cloud-upload"></i> Upload image
+                     <i class="fa fa-cloud-upload"></i> UPLOAD IMAGE
                   </label>
                   </div>
                 </div>
