@@ -7,16 +7,22 @@ body {
   display:block;
   justify-content: center;
   padding-bottom: 400px;
-  border: 1.5px solid rgba(0, 0, 0, 0.200);
+  border: 1.5px solid rgba(174, 189, 209);
   margin-left: 2%;
   margin-right: 2%;
 }
-
+.greenbg{
+  background-color: rgb(56, 104, 48);
+}
 .left {
   margin-left: -220px;
   padding-left: 250px;
+  color: #fff;
+  /* color: rgb(165, 164, 179); */
 }
-
+ul {
+  color: #fff;
+}
 h3 {
   text-align: left;
 }

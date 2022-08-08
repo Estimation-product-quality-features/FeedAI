@@ -14,13 +14,15 @@ class Contact extends React.Component {
         return (
             <>
             <Navbar />
-
+            
+            <div class="greenbg">
+            <br></br><br></br>
             <h1>Contact List</h1>
             <div className="contact">
 
             <div>
                 <div>
-                <h2 class="left">Supervisor:</h2>
+                <h2 className="left">Supervisor:</h2>
                     <ul>
                         Name: M.Sc. Maite Alvela <br></br>
                         Email: malvela@uni-bremen.de
@@ -31,16 +33,16 @@ class Contact extends React.Component {
                     </ul>
                 </div>
                 <br></br>
-                <h2 class="left">Student:</h2>
+                <h2 className="left">Student:</h2>
                     <ul>
                         Name: Hannes Gelbhardt <br></br>
                         Email: ha_ge@uni-bremen.de
                     </ul>
 
-                </div> 
-        
+                </div>
             </div>
-                
+            <br></br>
+            </div>
             <Footer />
         
             </>

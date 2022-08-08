@@ -1,7 +1,7 @@
 import React from "react";
 import '../../App.css';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import FeaturesTiles from "../../components/FeaturesTiles";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 // One page
@@ -66,9 +66,9 @@ class Menu extends React.Component {
             <Footer/>
           </div>
         </div>
-
-
+        
       );
+    
     }
 }
 

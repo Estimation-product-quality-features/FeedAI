@@ -1,12 +1,17 @@
 body {
+  /* background-color: rgb(56, 104, 48); */
   /* padding: 1rem; */
   /* max-width: 1200px; */
   margin: 30px auto;
 }
-
-.wiki{
+/* .Detection {
   background-color: rgb(56, 104, 48);
-  display:flex;}
+} */
+.wiki{
+  /* background-color: rgb(56, 104, 48); */
+ 
+  display:flex;
+}
 
 .column-1 {
   flex-shrink: 0; /* shrinks to 0 to apply 50% width*/
@@ -20,36 +25,22 @@ body {
 .box {
   padding: 10px;
   border-radius: 12px;
-  border: 2px solid rgb(165, 164, 179);
+  /* border: 2px solid rgb(165, 164, 179); */
+  border: 2px solid rgb(92, 114, 98);
   margin: 1rem;
-  box-shadow: 1px 1px 1px #000;
+  box-shadow: 2px 2px 2px #000;
 }
-.mainRunner_ssd {
-  /* border: 1px solid #000; */
-}
+/* .mainRunner_ssd {
+   border: 1px solid #000;
+} */
 
 .img_ssd1 {
+  float: right;
   position: relative;
-  width: 25%;
-  height: 25%;
-  left: 100px;
-  z-index: 3;
-}
-
-.img_ssd2 {
-  position: relative;
-  z-index: 1;
-  width: 50%;
-  height: 50%;
-  top: -50px;
-  left: 30px;
-}
-.img_ssd3 {
-  position: relative;
-  width: 25%;
-  height: 25%;
-  z-index: 2;
-  left: -60px;
+  width: 100%;
+  height: 100%;
+  /* left: 100px; */
+  /* z-index: 3; */
 }
 
 .mainRunner_rcnn {
@@ -59,26 +50,33 @@ body {
 
 .img_rcnn1 {
   position: relative;
-  width: 25%;
-  height: 25%;
-  top: 40px;
-  left: 365px;
+  float: right;
+  /* align-content: flex-end; */
+  width: 65%;
+  height: 65%;
+  /* top: 40px;
+  left: 365px; */
   z-index: 3;
 }
-
-.img_rcnn2 {
-  position: relative;
-  z-index: 1;
-  width: 45%;
-  height: 45%;
-  top: 40px;
-  left: 200px;
+.greenbg{
+  /* background-color: rgb(56, 104, 48); */
+  background-color: rgb(106, 134, 115);
 }
-.img_rcnn3 {
-  position: relative;
-  width: 25%;
-  height: 25%;
-  top: -145px;
-  z-index: 2;
-  left: -10px;
+p {
+  font-size: large;
+}
+table {
+  background-color: rgb(136, 167, 146);
+  margin: auto;
+  font-size: x-large;
+  /* border: 2px solid rgb(165, 164, 179); */
+  border: 2px solid rgb(92, 114, 98);
+  box-shadow: 2px 2px 2px #000;
+  border-collapse: collapse;
+}
+th, td {
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 2px solid rgb(92, 114, 98);
+  border-collapse: collapse;
 }

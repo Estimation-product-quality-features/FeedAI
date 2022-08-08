@@ -76,7 +76,10 @@ async function load_rcnn_model() {
 
 function process_input(img){
   const tfimg = tf.browser.fromPixels(img).toInt();
-  const expandedimg = tfimg.expandDims();
+  const tfimgResized = tf.image.resizeNearestNeighbor(
+  												tfimg, [512,512], true
+  											);
+  const expandedimg = tfimgResized.expandDims();
   return expandedimg;
 };
 
@@ -85,11 +88,17 @@ async function detectFrame(img_url, model) {
   var img = new Image();
   var src = document.getElementById('canvasTop');
   img.src = img_url;
+  img.onload = function()
+  	{
+  	console.log(`Loaded images for prediction`)
+  	}
+  	
   img.id = "imgCanvas";
-  const imgWidth = 512
-  const imgHeight = 512
-  img.width = imgWidth //has to be defined for tensorflow pixel
-  img.height = imgHeight // ^^
+  const newImgWidth = 512;
+  const newImgHeight = 512;
+  
+  //img.width = imgWidth //has to be defined for tensorflow pixel
+  //img.height = imgHeight // ^^
 
   //needs to be appended somewhere else or otherwise be made visible
   src.appendChild(img);
@@ -253,11 +262,43 @@ class AddEvaluation extends React.Component {
   // Handle changes
   /////////////////////////////////////////////////////////
   handleInputChange(event) {
+  	const maxWidth = 512
     const ctx = canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    this.setState({
-      imgPred: URL.createObjectURL(event.target.files[0])
-    })
+    var img = new Image()
+    img.src = URL.createObjectURL(event.target.files[0])
+    img.onload = (() => 
+  	{
+  		console.log(`In onload`);
+  		var myCanvas = document.getElementById("canvasTop");
+  		const tfimg = tf.browser.fromPixels(img).toInt();
+  		
+  		const newHeigth = tf.cast(maxWidth/tfimg.shape[1]*tfimg.shape[0], 'int32').dataSync()
+  		const tfImgResized = tf.image.resizeNearestNeighbor(
+  												tfimg, [maxWidth, newHeigth], true
+  											);
+  		tf.browser.toPixels(tfImgResized, myCanvas).then(()=>{
+  			tfImgResized.dispose();
+  		});
+  		
+  		console.log(`Loaded Input images for prediction`);
+  		this.setState({
+      	imgPred: myCanvas.toDataURL() //URL.createObjectURL() //event.target.files[0]
+   		});
+  		
+  	});
+  	
+
+
+    const newImgWidth = 512;
+  	const newImgHeight = 512;
+  	
+  	//img.width = width;
+  	//img.height = height;
+  	
+    // const tensor_img = tf.browser.fromPixels(img);
+    // console.log(`Imgshape: ${tensor_img.shape}`)
+
   }
 
   handleClickCard(img) {
@@ -280,10 +321,18 @@ class AddEvaluation extends React.Component {
   handleClickCard2(imgSrc) {
     const ctx = canvasRef.current.getContext("2d");
     var img = new Image()
-    img.onload = function() {
-      ctx.drawImage(img, 0, 0);
-    };
     img.src = imgSrc
+    img.onload = function() {
+    	const tfImg = tf.browser.fromPixels(img);
+    	const tfImgResized = tf.image.resizeNearestNeighbor(
+  												tfImg, [512,512], true
+  											);
+  		//var imgResized = new Image()
+  		//imgResized.id = 'resized'
+  		//const myCanvas = document.getElementById('resized')
+  		//tf.browser.toPixels(myCanvas)
+      ctx.drawImage(tfImgResized, 0, 0);
+    };
   }
 
   returnImage(img) {
@@ -310,6 +359,7 @@ class AddEvaluation extends React.Component {
               <div style={{display: 'flex', gap: '60px'}}>
                 <div>
                   <h1>Select an image</h1>
+                  <br></br>
                   <ImageList sx={{heigth:128, width:128}} cols={2} rowHeight={256}>
                       {itemData.map((item) => (
                         <ImageListItem key={item.img}>
@@ -339,7 +389,7 @@ class AddEvaluation extends React.Component {
                               defaultValue={"model"}
                               color='primary'
                               onChange={this.handleMenuChange}
-                              style={{background: "#D3D3D3", value: "M", height: '50px'}}
+                              style={{background: "#D3D3D3", value: "M", height: '50px', paddingInlineStart:'8px', borderRadius:'5px'}}
                           >
                           <option value="ssd">SSD MobileNetV1</option>
                           <option value="frcnn">Faster RCNN</option>
@@ -350,6 +400,7 @@ class AddEvaluation extends React.Component {
                        variant="contained"
                        color='inherit'
                        size='large'
+                       
                        onClick={() => detectFrame(this.state.imgPred, currentModel)}>
                       Predict image
                       </Button>
@@ -372,7 +423,7 @@ class AddEvaluation extends React.Component {
                  <div style={{display: 'flex', justifyContent: 'center'}}>
                   <label class="custom-file-upload">
                   <input type="file" onChange={this.handleInputChange}/>
-                     <i class="fa fa-cloud-upload"></i> UPLOAD IMAGE
+                     <i class="fa fa-cloud-upload" variant="contained"></i> UPLOAD IMAGE
                   </label>
                   </div>
                 </div>
