@@ -134,5 +134,11 @@ dmypy.json
 #Node
 node_modules/
 
+#Firebase
+*firebase*
+
+#tmp files
+install_node.txt
+
 # docker
 
