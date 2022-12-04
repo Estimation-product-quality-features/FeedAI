@@ -15,14 +15,30 @@ body {
   background-color: rgb(56, 104, 48);
 }
 .left {
-  margin-left: -220px;
-  padding-left: 250px;
+  margin-left: 24.5%;
+  /* padding-left: 50%; 250px; */
+  font-size: x-large;
+  color: #fff;
+  /* color: rgb(165, 164, 179); */
+}
+.leftStudent {
+  /* margin-left: 17%; */
+  margin-left: 25%;
+  /* padding-left: 30%; 250px; */
+  font-size: x-large;
   color: #fff;
   /* color: rgb(165, 164, 179); */
 }
 ul {
   color: #fff;
+  font-size: large;
+  margin-left: -2%;
+  text-align: center;
+}
+.student{
+  margin-left: -2.5%;
 }
 h3 {
-  text-align: left;
+  font-size: x-large;
+  text-align: center;
 }

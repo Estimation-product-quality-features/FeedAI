@@ -22,21 +22,21 @@ class Contact extends React.Component {
 
             <div>
                 <div>
+                <ul >
                 <h2 className="left">Supervisor:</h2>
-                    <ul>
-                        Name: M.Sc. Maite Alvela <br></br>
-                        Email: malvela@uni-bremen.de
-                        <br></br>
-                        <br></br>
-                        Name: Prof. Dr.-Ing. Klaus-Dieter Thoben <br></br>
-                        Email: thoben@uni-bremen.de
-                    </ul>
+                    M.Sc. Maite Alvela <br></br>
+                    malvela@uni-bremen.de
+                    <br></br>
+                    <br></br>
+                    Prof. Dr.-Ing. Klaus-Dieter Thoben <br></br>
+                    thoben@uni-bremen.de
+                </ul>
                 </div>
                 <br></br>
-                <h2 className="left">Student:</h2>
-                    <ul>
-                        Name: Hannes Gelbhardt <br></br>
-                        Email: ha_ge@uni-bremen.de
+                <h2 className="leftStudent">Student:</h2>
+                    <ul className="student">
+                        Hannes Gelbhardt <br></br>
+                        ha_ge@uni-bremen.de
                     </ul>
 
                 </div>

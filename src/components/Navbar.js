@@ -5,7 +5,7 @@ import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import App from '../App';
-import app from "../Firebase/firebase-config";
+// import app from "../Firebase/firebase-config";
 
 
 function Navbar() {
@@ -46,22 +46,22 @@ function Navbar() {
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                   <li className='nav-item'>
                     <Link to='/menu' className='nav-links' onClick={closeMobileMenu}>  
-                      Home
+                      <h3>Home</h3>
                     </Link>
                   </li>
                   <li className='nav-item'>
                     <Link to='/add-Evaluation' className='nav-links' onClick={closeMobileMenu}>  
-                      Data Analysis
+                    <h3>Data Analysis</h3>
                     </Link>
                   </li>
                   <li className='nav-item'>
                     <Link to='/live' className='nav-links' onClick={closeMobileMenu}>  
-                      Live Prodution
+                    <h3>Live Prodution</h3>
                     </Link>
                   </li>
                   <li className='nav-item'>
                     <Link to='/wiki' className='nav-links' onClick={closeMobileMenu}>  
-                      Wiki
+                    <h3>Wiki</h3>
                     </Link>
                   </li>
                   <li className='nav-item'>
@@ -70,7 +70,7 @@ function Navbar() {
                     className='nav-links'
                     onClick={closeMobileMenu}
                   >
-                    Contact
+                    <h3>Contact</h3>
                   </Link>
                 </li>
               </ul>
