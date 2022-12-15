@@ -1,7 +1,7 @@
 # Flour Quality Tracker in Batch Processing 🌾  
 ## [Visit this site here!](https://grain-52356.web.app/) (Wiki still under construction)
 
-### An intuitive and helpful tracking tool for evaluating the quality on image data of the produced flour, in the context of compound feed industries.
+### An intuitive and helpful tracking tool for evaluating the quality of the produced flour on image data, in the context of compound feed industries.
 The compound feed industry can product many feed mixtures up to many different ingredients. Ingredients as agricultural raw materials, such as maize and wheat, are to be processed in these industries. Under rapidly and strongly fluctuating input materials and changing recipes, the condition of a process has to be continually tuned by process operators to satisfy the quality requirements. Flour is one popular feed due to its balanced nutrional nature and availability in various forms, for instance, in pellets. The schredding of natural raw materials leads to the required product structure (flour), which is relevant for mixing and pelleting, and ultimative for the animal health.
 After milling, samples of the produced flour are evaluated on the particle size (quality specification) via machine-learning algorithms. In this repo, we developed a traker tool that automatically detect partially crushed and uncrushed grains on product images, so that engineers can subsequently use these results for a better adjustment of the mill parameters. 
 
