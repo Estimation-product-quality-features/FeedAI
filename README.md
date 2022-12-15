@@ -1,4 +1,4 @@
-# Flour Quality Tracker in Batch Processing 🌾  
+# Product Quality Tracking Software for Batch Processing 🌾  
 ## [Visit this site here!](https://grain-52356.web.app/) (Wiki still under construction)
 
 ### An intuitive and helpful tracking software tool for evaluating the quality of the produced flour on image data, in the context of compound feed industries.
