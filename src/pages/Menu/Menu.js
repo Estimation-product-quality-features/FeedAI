@@ -49,9 +49,9 @@ class Menu extends React.Component {
               onCanPlayThrough={() => this.display_content()}
               />
 
-              <h1>TRACKER</h1>
+              <h1>Product Quality Tracking Software</h1>
               
-              <p>Grain Detection Livestream</p>
+              <p>Whole Grain Detection for the agri-food sector</p>
                 
               <div className='hero-btns'>
                   <Button

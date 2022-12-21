@@ -84,6 +84,10 @@ function process_input(img){
 };
 
 async function detectFrame(img_url, model) {
+  var feedback = document.getElementById('feedbackPredict');
+
+  feedback.innerText = "Predicting...";
+  feedback.style.color = "Red";
   await tf.ready();
   var img = new Image();
   var src = document.getElementById('canvasTop');
@@ -222,7 +226,10 @@ function renderPredictions(predictions, img) {
     hiddenCtx.fillStyle = "#000000";
     hiddenCtx.fillText(item["label"] + " " + (100*item["score"]).toFixed(2) + "%", x, y);
   });
-  console.log('Done predicting')
+  var feedback = document.getElementById('feedbackPredict');
+  feedback.innerText = "Ready";
+  feedback.style.color = "rgb(245,245,245)";
+  console.log('Done predicting');
 };
 
 
@@ -273,12 +280,15 @@ var currentModel = load_ssd_model();
 // Canvas to draw on
 var canvasRef = React.createRef();
 var hiddenCanvasRef = React.createRef();
+var a = "Ready";
+
 
 class AddEvaluation extends React.Component {
   constructor(props){
     super(props);
     this.state= {
-      imgPred: "images/pred_init.svg"
+      imgPred: "images/pred_init.svg",
+      feedbackPredict: a
     };
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleClickCard = this.handleClickCard.bind(this)
@@ -444,8 +454,7 @@ class AddEvaluation extends React.Component {
         <div className= "Detection">
         <><Navbar />
         {/* Some spacing  */}
-        <br></br> <br></br> <br></br> <br></br>
-        <br></br> <br></br> <br></br> <br></br>
+        <br></br>
 
         <Container>
           <Grid container spacing={6}>
@@ -474,15 +483,16 @@ class AddEvaluation extends React.Component {
               <div>
                   <h1>Model detection</h1>
                   <br></br>
+
                   <div style={{display: 'flex', gap: '30px', justifyContent: 'center'}}>
                   <Box sx={{height:'auto', width: '45%'}}>
                       <FormControl fullWidth variant="filled" color="primary">
                           <NativeSelect
                               id="modelID"
-                              defaultValue={"model"}
+                              defaultValue={model_name}
                               color='primary'
                               onChange={this.handleMenuChange}
-                              style={{background: "#D3D3D3", value: "M", height: '50px', paddingInlineStart:'8px', borderRadius:'5px'}}
+                              style={{background: "#D3D3D3", value: "M", height: '50px', width: '180px', paddingInlineStart:'8px', borderRadius:'5px'}}
                           >
                           <option value="ssd">SSD MobileNetV1</option>
                           <option value="frcnn">Faster R-CNN</option>
@@ -498,7 +508,9 @@ class AddEvaluation extends React.Component {
                       Predict image
                       </Button>
                   </div>
-                  <br></br> <br></br>
+                  <br></br>
+                  <h3 id='feedbackPredict' style={{color: 'rgb(245,245,245)'}}>{this.state.feedbackPredict}</h3>
+                  <br></br>
                   <Card>
                   <div id="wrapper">
                     <img src={this.state.imgPred} alt="predict image"/>

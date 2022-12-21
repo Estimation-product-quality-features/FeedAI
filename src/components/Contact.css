@@ -2,12 +2,13 @@ body {
   background-color: rgb(56, 104, 48);
 }
 .contact {
+  height: 60vh;
   margin-bottom: 150px;
   margin-top: 40px;
   display:block;
   justify-content: center;
   padding-bottom: 400px;
-  border: 1.5px solid rgba(174, 189, 209);
+  /* border: 1.5px solid rgba(174, 189, 209); */
   margin-left: 2%;
   margin-right: 2%;
 }

@@ -16,27 +16,53 @@ class Contact extends React.Component {
             <Navbar />
             
             <div class="greenbg">
-            <br></br><br></br>
-            <h1>Contact List</h1>
+            <br></br>
+            {/* <h1>Contact List</h1> */}
             <div className="contact">
 
             <div>
                 <div>
                 <ul >
                 <h2 className="left">Supervisor:</h2>
-                    M.Sc. Maite Alvela <br></br>
-                    malvela@uni-bremen.de
+                    - M.Sc. Maite Alvela -
+                    <br></br>
+                    works as research associate for the
+                    <br></br>
+                    Institute of Integrated Product Developement (BIK)
+                    <br></br>
+                    at the University of Bremen.
+                    <br></br>
+                    E-Mail: malvela@uni-bremen.de
+                    <br></br>
+                    
+                    <br></br>
+                    - Prof. Dr.-Ing. Klaus-Dieter Thoben -
+                    <br></br>
+                    is professor for integrated product developement  
+                    <br></br>
+                    at the University of Bremen 
+                    <br></br>
+                    and member of the management of the
+                    <br></br>
+                    BIBA - Bremer Institute für Pruduktion und Logistik Gmbh.
                     <br></br>
                     <br></br>
-                    Prof. Dr.-Ing. Klaus-Dieter Thoben <br></br>
-                    thoben@uni-bremen.de
+                    {/* ist Professor für Integrierte Produktentwicklung an der Universität Bremen und Mitglied der Geschäftsführung des BIBA - Bremer Institut für Produktion und Logistik GmbH. */}
+                    E-Mail: thoben@uni-bremen.de
                 </ul>
                 </div>
                 <br></br>
                 <h2 className="leftStudent">Student:</h2>
                     <ul className="student">
-                        Hannes Gelbhardt <br></br>
-                        ha_ge@uni-bremen.de
+                        - Hannes Gelbhardt -
+                        <br></br>
+                        is doing his master 
+                        <br></br>
+                        with a focus on AI in computer science
+                        <br></br>
+                        at the University of Bremen
+                        <br></br>
+                        E-Mail: ha_ge@uni-bremen.de
                     </ul>
 
                 </div>

@@ -14,7 +14,7 @@ class Wiki extends React.Component {
             <>
                 <Navbar />
                 <div className="greenbg"><br></br>
-                <h1>Wiki</h1>
+                {/* <h1>Wiki</h1> */}
                 <div className="wiki">
                 <div class="column-1 box">
                     <h1>SSD with Mobilenet v1</h1>

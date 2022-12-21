@@ -3,8 +3,10 @@ import { Button } from './Button';
 
 
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import App from '../App';
+import { rgbToHex } from '@material-ui/core';
 // import app from "../Firebase/firebase-config";
 
 
@@ -45,33 +47,34 @@ function Navbar() {
           <div className='navbar-container2'>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                   <li className='nav-item'>
-                    <Link to='/menu' className='nav-links' onClick={closeMobileMenu}>  
+                    <NavLink to='/menu' className='nav-links' activeStyle={{background: "rgb(106, 134, 115)"}} onClick={closeMobileMenu}>  
                       <h3>Home</h3>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className='nav-item'>
-                    <Link to='/add-Evaluation' className='nav-links' onClick={closeMobileMenu}>  
+                    <NavLink to='/add-Evaluation' className='nav-links' activeStyle={{background: "rgb(106, 134, 115)"}} onClick={closeMobileMenu}>  
                     <h3>Data Analysis</h3>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className='nav-item'>
-                    <Link to='/live' className='nav-links' onClick={closeMobileMenu}>  
+                    <NavLink to='/live' className='nav-links' activeStyle={{background: "rgb(106, 134, 115)"}} onClick={closeMobileMenu}>  
                     <h3>Live Prodution</h3>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className='nav-item'>
-                    <Link to='/wiki' className='nav-links' onClick={closeMobileMenu}>  
+                    <NavLink to='/wiki' className='nav-links' activeStyle={{background: "rgb(106, 134, 115)"}} onClick={closeMobileMenu}>  
                     <h3>Wiki</h3>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className='nav-item'>
-                  <Link
+                  <NavLink
                     to='/contact'
                     className='nav-links'
+                    activeStyle={{background: "rgb(106, 134, 115)"}}
                     onClick={closeMobileMenu}
                   >
                     <h3>Contact</h3>
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
           </div>
