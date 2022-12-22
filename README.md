@@ -26,7 +26,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ---
 ## Installation
 
-The easiest way to run the app locally is to clone the repository and execute the following docker commands in the root folder and a shell of your choice.  
+The easiest way to run the app locally is to clone the repository and run the node pachage manager via  
+> npm install
+
+followed by  
+> npm start  
+
+For the deployment with firebase first build the production optimized site using  
+> npm run build
+
+to then deploy the webapp via firebase the same firebase commands as mentioned below can be used.  
+
+
+To run the webapp using docker the following commands in the root folder and a shell of your choice.  
 For the initial run build the by running the following command in your shell:  
 
 > ```sudo docker build -t grain:dev .```
