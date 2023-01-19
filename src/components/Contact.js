@@ -17,60 +17,52 @@ class Contact extends React.Component {
             
             <div class="greenbg">
             <br></br>
-            {/* <h1>Contact List</h1> */}
             <div className="contact">
 
             <div>
                 <div>
-                <ul >
                 <h2 className="left">Supervisor:</h2>
-                    - M.Sc. Maite Alvela -
-                    <br></br>
-                    works as research associate for the
-                    <br></br>
-                    Institute of Integrated Product Developement (BIK)
-                    <br></br>
-                    at the University of Bremen.
-                    <br></br>
-                    E-Mail: malvela@uni-bremen.de
-                    <br></br>
-                    
-                    <br></br>
-                    - Prof. Dr.-Ing. Klaus-Dieter Thoben -
-                    <br></br>
-                    is professor for integrated product developement  
-                    <br></br>
-                    at the University of Bremen 
-                    <br></br>
-                    and member of the management of the
-                    <br></br>
-                    BIBA - Bremer Institute für Pruduktion und Logistik Gmbh.
-                    <br></br>
-                    <br></br>
-                    {/* ist Professor für Integrierte Produktentwicklung an der Universität Bremen und Mitglied der Geschäftsführung des BIBA - Bremer Institut für Produktion und Logistik GmbH. */}
-                    E-Mail: thoben@uni-bremen.de
-                </ul>
-                </div>
-                <br></br>
-                <h2 className="leftStudent">Student:</h2>
-                    <ul className="student">
-                        - Hannes Gelbhardt -
-                        <br></br>
-                        is doing his master 
-                        <br></br>
-                        with a focus on AI in computer science
-                        <br></br>
-                        at the University of Bremen
-                        <br></br>
-                        E-Mail: ha_ge@uni-bremen.de
-                    </ul>
+                <div className="text-center">
+                <p>
+                M.Sc. Maite Alvela works as research associate for the Institute <br/>
+                of Integrated Product Developement (BIK) at the University of Bremen. <br/>
+                E-Mail: malvela@uni-bremen.de
+                </p>
 
                 </div>
+
+                <div className="text-center">
+                <p>
+                Prof. Dr.-Ing. Klaus-Dieter Thoben is professor for integrated product <br/>
+                developement at the University of Bremen and member of <br/>  the management of 
+                the BIBA - Bremer Institute für Pruduktion und Logistik Gmbh. <br/>
+                E-Mail: thoben@uni-bremen.de
+                </p>
+
+                </div>
+                <h2 className="leftStudent">Student:</h2>
+                <div className="text-center">
+                <p>
+                    Hannes Gelbhardt is doing his master with a focus on AI in <br/> 
+                    computer science at the University of Bremen <br/> 
+                    E-Mail: ha_ge@uni-bremen.de
+
+                </p>
+
+                </div>
+
+                
+                </div>
+            </div>
             </div>
             <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             </div>
+
             <Footer />
-        
+            {/* <br></br> */}
             </>
             
         );

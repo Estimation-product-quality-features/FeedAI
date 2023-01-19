@@ -67,6 +67,13 @@ body {
 p {
   font-size: large;
 }
+
+a.greenlink:link {
+  color: blue;
+}
+a.greenlink:visited {
+  color: rgb(192, 192, 240);
+}
 table {
   background-color: rgb(136, 167, 146);
   margin: auto;

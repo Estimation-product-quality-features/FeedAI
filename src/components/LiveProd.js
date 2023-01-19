@@ -24,7 +24,7 @@ class LiveProd extends React.Component {
             />
             </div>
             <div></div>
-            <Footer />
+            {/* <Footer /> */}
             </>
         );
     }

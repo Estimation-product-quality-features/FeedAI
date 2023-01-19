@@ -280,7 +280,7 @@ var currentModel = load_ssd_model();
 // Canvas to draw on
 var canvasRef = React.createRef();
 var hiddenCanvasRef = React.createRef();
-var a = "Ready";
+var a = "Ready!";
 
 
 class AddEvaluation extends React.Component {
@@ -508,9 +508,10 @@ class AddEvaluation extends React.Component {
                       Predict image
                       </Button>
                   </div>
-                  <br></br>
-                  <h3 id='feedbackPredict' style={{color: 'rgb(245,245,245)'}}>{this.state.feedbackPredict}</h3>
-                  <br></br>
+                  {/* <br></br> */}
+                  <h3 id='feedbackPredict' style={{color: 'rgb(43, 78, 54)'}}>{this.state.feedbackPredict}</h3>
+                  {/* 'rgb(245,245,245)' */}
+                  {/* <br></br> */}
                   <Card>
                   <div id="wrapper">
                     <img src={this.state.imgPred} alt="predict image"/>
@@ -532,7 +533,7 @@ class AddEvaluation extends React.Component {
                  </div>
                   </Card>
 
-                  <br></br> <br></br>
+                  <br></br>
                  <div style={{display: 'flex', justifyContent: 'center'}}>
                  <div style={{display: 'flex', justifyContent: 'left'}}>
                   <label className="custom-file-upload">
