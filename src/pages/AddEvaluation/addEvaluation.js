@@ -227,8 +227,8 @@ function renderPredictions(predictions, img) {
     hiddenCtx.fillText(item["label"] + " " + (100*item["score"]).toFixed(2) + "%", x, y);
   });
   var feedback = document.getElementById('feedbackPredict');
-  feedback.innerText = "Ready";
-  feedback.style.color = "rgb(245,245,245)";
+  feedback.innerText = "Ready!";
+  feedback.style.color = "rgb(43, 78, 54)";
   console.log('Done predicting');
 };
 

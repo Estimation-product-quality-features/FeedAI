@@ -12,7 +12,6 @@ body {
  
   display:flex;
 }
-
 .column-1 {
   flex-shrink: 0; /* shrinks to 0 to apply 50% width*/
   flex-basis: 48%; /* sets initial width to 50% */
@@ -63,6 +62,10 @@ body {
 .greenbg{
   /* background-color: rgb(56, 104, 48); */
   background-color: rgb(106, 134, 115);
+}
+
+caption{
+  font-size: large;
 }
 p {
   font-size: large;

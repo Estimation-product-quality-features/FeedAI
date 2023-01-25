@@ -26,7 +26,7 @@ class Contact extends React.Component {
                 <p>
                 M.Sc. Maite Alvela works as research associate for the Institute <br/>
                 of Integrated Product Developement (BIK) at the University of Bremen. <br/>
-                E-Mail: malvela@uni-bremen.de
+                <b>E-Mail: malvela@uni-bremen.de</b>
                 </p>
 
                 </div>
@@ -35,8 +35,8 @@ class Contact extends React.Component {
                 <p>
                 Prof. Dr.-Ing. Klaus-Dieter Thoben is professor for integrated product <br/>
                 developement at the University of Bremen and member of <br/>  the management of 
-                the BIBA - Bremer Institute für Pruduktion und Logistik Gmbh. <br/>
-                E-Mail: thoben@uni-bremen.de
+                the BIBA - Bremer Institute für Pruduktion und Logistik GmbH. <br/>
+                <b>E-Mail: thoben@uni-bremen.de</b>
                 </p>
 
                 </div>
@@ -45,7 +45,7 @@ class Contact extends React.Component {
                 <p>
                     Hannes Gelbhardt is doing his master with a focus on AI in <br/> 
                     computer science at the University of Bremen <br/> 
-                    E-Mail: ha_ge@uni-bremen.de
+                    <b>E-Mail: ha_ge@uni-bremen.de</b>
 
                 </p>
 
