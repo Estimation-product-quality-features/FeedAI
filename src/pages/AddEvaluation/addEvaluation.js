@@ -33,6 +33,7 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 tf.setBackend('webgl');
 
+// Mapping of the classes
 let classesDir = {
   1: {
       name: 'Corn',
@@ -59,7 +60,7 @@ async function load_ssd_model() {
     const model = await loadGraphModel('/models/ssd_js/model.json');
     return model;
   } catch(e) {
-    console.log("the SSD model could not be loaded")
+    console.log("The SSD model could not be loaded")
   }
 }
 
@@ -70,7 +71,7 @@ async function load_rcnn_model() {
     const model = await loadGraphModel('/models/rcnn_js/model.json');
     return model;
   } catch(e) {
-    console.log("the RCNN model could not be loaded")
+    console.log("The RCNN model could not be loaded")
   }
 }
 
@@ -201,8 +202,6 @@ function renderPredictions(predictions, img) {
       hiddenCtx.lineWidth = 4;
       hiddenCtx.strokeRect(x, y, width, height);
 
-
-
       // Draw the label background.
       ctx.fillStyle = "#00FFFF";
       const textWidth = ctx.measureText(item["label"] + " " + (100 * item["score"]).toFixed(2) + "%").width;
@@ -331,8 +330,6 @@ class AddEvaluation extends React.Component {
     var img = new Image()
     var imgUrl = URL.createObjectURL(event.target.files[0])
     img.src = imgUrl
-    //ctx.canvas.width = img.width
-    //ctx.canvas.height = img.height
 
     img.onload = (() => 
   	{
@@ -343,34 +340,51 @@ class AddEvaluation extends React.Component {
   		// var myCanvas = document.getElementById("canvasTop");
       //var myCanvasHidden = document.getElementById("hiddenCanvas");
   		const tfimg = tf.browser.fromPixels(img).toInt();
-
-      // Create hidden canvas
-      //https://stackoverflow.com/questions/10652513/html5-dynamically-create-canvas#10652568
-      var hiddenCanvas = document.createElement('canvas');
-      hiddenCanvas.setAttribute('hidden', true);
-      hiddenCanvas.setAttribute('width', img.width);
-      hiddenCanvas.setAttribute('height', img.height);
       
       // document.body.appendChild(hiddenCanvas);
 
       console.log(`Imgshape: ${tfimg.shape}`)
   		const newHeigth = tf.cast(maxWidth/tfimg.shape[1]*tfimg.shape[0], 'int32').dataSync()
+      
+
+      // Throws an error if the same image is uploaded again
   		const tfImgResized = tf.image.resizeNearestNeighbor(
   												tfimg, [maxWidth, newHeigth], true
   											);
 
       console.log(`Imgshape new: ${tfImgResized.shape}`)
-      console.log(`Imgshape new: ${tfImgResized.dtype}`)
+      console.log(`Imagedtype: ${tfImgResized.dtype}`)
 
+
+            // Create hidden canvas
+      //https://stackoverflow.com/questions/10652513/html5-dynamically-create-canvas#10652568
+      var hiddenCanvas = document.createElement('canvas');
+      hiddenCanvas.setAttribute('hidden', true);
+      hiddenCanvas.setAttribute('width', maxWidth);
+      hiddenCanvas.setAttribute('height', newHeigth);
+
+      // ctx.drawImage(tfImgResized, 0, 0);
+
+
+
+      
       tf.browser.toPixels(tfImgResized, hiddenCanvas).then(()=>{
-  			tfImgResized.dispose();
+        tfImgResized.dispose();
         console.log("Printed first")
-  		});
+      });
 
-  		tf.browser.toPixels(tfimg, hiddenCanvas).then(()=>{
-  			tfimg.dispose();
-        console.log("Printed first")
-  		});
+
+
+      ctx.canvas.width = maxWidth;
+      ctx.canvas.height = maxWidth;
+
+
+      // const imageData = hiddenCanvas.getImageData(0, 0, 512, 512);
+
+  		// tf.browser.toPixels(tfimg, ctx).then(()=>{
+  		// 	tfimg.dispose();
+      //   console.log("Printed first")
+  		// });
 
       // tf.browser.toPixels(tfimg, myCanvasHidden).then(()=>{
       //   console.log("Printed second")
@@ -458,7 +472,7 @@ class AddEvaluation extends React.Component {
 
         <Container>
           <Grid container spacing={6}>
-              <div style={{display: 'flex', gap: '60px'}}>
+              <div style={{display: 'flex', gap: '40px'}}>
                 <div>
                   <h1>Select an image</h1>
                   <br></br>
@@ -557,6 +571,14 @@ class AddEvaluation extends React.Component {
                   </div>
 
                 </div>
+
+                {/* <div>
+                <h1>Description</h1>
+                  <br></br>
+                  <p>
+                    This site gives an interface to the trained models explained in the Wiki page.
+                  </p>
+                </div> */}
            </div>
           </Grid>
         </Container>

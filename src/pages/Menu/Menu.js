@@ -39,7 +39,7 @@ class Menu extends React.Component {
           <div id='content' className='hidden'>
             <Navbar />
             <div className='hero-container'>
-              <video src='/videos/field_lower.mp4'
+              <video src='/videos/grain_intro.mp4'
               id="field_video"
               autoPlay
               loop
@@ -48,6 +48,15 @@ class Menu extends React.Component {
               height="1080"
               onCanPlayThrough={() => this.display_content()}
               />
+              {/* <video src='/videos/field_lower.mp4'
+              id="field_video"
+              autoPlay
+              loop
+              muted
+              width="1920"
+              height="1080"
+              onCanPlayThrough={() => this.display_content()}
+              /> */}
 
               <h1>Product Quality Tracking Software</h1>
               
