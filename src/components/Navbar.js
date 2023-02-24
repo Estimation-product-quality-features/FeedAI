@@ -7,8 +7,6 @@ import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import App from '../App';
 import { rgbToHex } from '@material-ui/core';
-// import app from "../Firebase/firebase-config";
-
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -58,7 +56,7 @@ function Navbar() {
                   </li>
                   <li className='nav-item'>
                     <NavLink to='/live' className='nav-links' activeStyle={{background: "rgb(106, 134, 115)"}} onClick={closeMobileMenu}>  
-                    <h3>Live Prodution</h3>
+                    <h3>Live Production</h3>
                     </NavLink>
                   </li>
                   <li className='nav-item'>
@@ -78,7 +76,6 @@ function Navbar() {
                 </li>
               </ul>
           </div>
-          {/* nowrap */}
         </nav>
       </>
     )

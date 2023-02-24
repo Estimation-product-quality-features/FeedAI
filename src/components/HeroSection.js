@@ -13,8 +13,6 @@ class HeroSection extends React.Component {
          autoPlay
          loop
          muted
-        //  width="1920"
-        //  height="1080"
          />
     
         <h1>TRACKER</h1>

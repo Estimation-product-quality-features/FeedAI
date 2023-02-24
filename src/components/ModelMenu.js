@@ -5,7 +5,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-// https://mui.com/components/selects/
 export default function ModelMenu() {
   const [model, setModel] = React.useState('');
 
@@ -22,7 +21,6 @@ export default function ModelMenu() {
                 id="modelID"
                 value={model}
                 label="Model"
-                // displayEmpty
                 variant="filled"
                 color='inherit'
                 onChange={handleChange}

@@ -1,66 +1,42 @@
 body {
-  /* background-color: rgb(56, 104, 48); */
-  /* padding: 1rem; */
-  /* max-width: 1200px; */
   margin: 30px auto;
 }
-/* .Detection {
-  background-color: rgb(56, 104, 48);
-} */
 .wiki{
-  /* background-color: rgb(56, 104, 48); */
- 
   display:flex;
 }
 .column-1 {
-  flex-shrink: 0; /* shrinks to 0 to apply 50% width*/
-  flex-basis: 48%; /* sets initial width to 50% */
+  flex-shrink: 0; 
+  flex-basis: 48%; 
 }
 .column-2 {
-  flex-shrink: 0; /* shrinks to 0 to apply 50% width*/
-  flex-basis: 48%; /* sets initial width to 50% */
+  flex-shrink: 0; 
+  flex-basis: 48%; 
 }
 
 .box {
   padding: 10px;
   border-radius: 12px;
-  /* border: 2px solid rgb(165, 164, 179); */
   border: 2px solid rgb(92, 114, 98);
   margin: 1rem;
   box-shadow: 2px 2px 2px #000;
 }
-/* .mainRunner_ssd {
-   border: 1px solid #000;
-} */
 
 .img_ssd1 {
-  /* float: center; */
-  /* position: center; */
   justify-content: center;
   width: 70%;
   margin-left: 20%;
-  /* height: 70%; */
-  /* left: 100px; */
-  /* z-index: 3; */
 }
 
 .mainRunner_rcnn {
   margin-top: 80px;
-  /* border: 1px solid #000; */
 }
 
 .img_rcnn1 {
-  /* position: relative;
-  float: right; */
-  /* align-content: flex-end; */
   justify-content: center;
   margin-left: 30%;
   width: 70%;
-  /* top: 40px;
-  left: 365px; */
 }
 .greenbg{
-  /* background-color: rgb(56, 104, 48); */
   background-color: rgb(106, 134, 115);
 }
 
@@ -81,7 +57,6 @@ table {
   background-color: rgb(136, 167, 146);
   margin: auto;
   font-size: x-large;
-  /* border: 2px solid rgb(165, 164, 179); */
   border: 2px solid rgb(92, 114, 98);
   box-shadow: 2px 2px 2px #000;
   border-collapse: collapse;

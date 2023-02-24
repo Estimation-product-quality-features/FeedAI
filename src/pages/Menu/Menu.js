@@ -48,16 +48,6 @@ class Menu extends React.Component {
               height="1080"
               onCanPlayThrough={() => this.display_content()}
               />
-              {/* <video src='/videos/field_lower.mp4'
-              id="field_video"
-              autoPlay
-              loop
-              muted
-              width="1920"
-              height="1080"
-              onCanPlayThrough={() => this.display_content()}
-              /> */}
-
               <h1>Product Quality Tracking Software</h1>
               
               <p>Whole Grain Detection for the agri-food sector</p>

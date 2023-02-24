@@ -3,15 +3,7 @@ import styled from "styled-components";
 
 // COCO SSD Model
 import "@tensorflow/tfjs-backend-cpu";
-//import "@tensorflow/tfjs-backend-webgl";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
-
-// Eigenes Model
-/*
-import * as tf from '@tensorflow/tfjs';
-import {loadGraphModel} from '@tensorflow/tfjs-converter';
-
-*/
 
 
 

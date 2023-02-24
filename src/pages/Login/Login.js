@@ -42,17 +42,17 @@ const Login = ({ history }) => {
                 <Header />
              
         
-                <div class="container" >
-                    <div class="center">
+                <div className="container" >
+                    <div className="center">
                     <h1>Log in</h1>
                     <form onSubmit={handleLogin}>
-                        <div class="form">
-                        <label class="label">
+                        <div className="form">
+                        <label className="label">
                             Email 
                         </label>                    
-                        <input name="email" type="email" placeholder="Email" />
+                        <input className="email" type="email" placeholder="Email" />
                         <br></br><br></br>
-                        <label class="label">
+                        <label className="label">
                             Password
                         </label>
                         
@@ -63,7 +63,7 @@ const Login = ({ history }) => {
                        
                    </form>
                    <br></br>
-                   <a href="/signup" class="button">Sign up</a>
+                   <a href="/signup" className="button">Sign up</a>
         
                    </div>
                 </div>

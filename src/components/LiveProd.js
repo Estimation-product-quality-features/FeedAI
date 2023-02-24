@@ -5,7 +5,6 @@ import Container from '@material-ui/core/Container';
 
 import './LiveProd.css';
 
-// const Wiki = () => {
 class LiveProd extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0)
@@ -24,7 +23,6 @@ class LiveProd extends React.Component {
             />
             </div>
             <div></div>
-            {/* <Footer /> */}
             </>
         );
     }

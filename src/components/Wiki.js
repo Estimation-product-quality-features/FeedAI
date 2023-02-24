@@ -4,7 +4,6 @@ import Footer from "./Footer";
 
 import './Wiki.css';
 
-// const Wiki = () => {
 class Wiki extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0)
@@ -14,9 +13,8 @@ class Wiki extends React.Component {
             <>
                 <Navbar />
                 <div className="greenbg"><br></br>
-                {/* <h1>Wiki</h1> */}
                 <div className="wiki">
-                <div class="column-1 box">
+                <div className="column-1 box">
                     <h1>SSD with Mobilenet v1</h1>
 
                     <p>
@@ -27,13 +25,12 @@ class Wiki extends React.Component {
                      Source: <a className="greenlink" href="https://link.springer.com/content/pdf/10.1007%2F978-3-319-46448-0_2.pdf">Here</a>
                         </p>
 
-                        {/* <br></br> */}
-                        {/* <br></br> */}
 
                 <div style={{display: 'flex', alignContent: 'center'}} >
                 <table style={{alignContent: 'center'}}>
                 <caption>The overall results of the SSD model on the grain dataset.
                      The trained model can be tested under the tab data analysis</caption>
+                     <tbody>
                     <tr>
                         <th>mAP [%]</th>
                         <th>Accuracy [%]</th>
@@ -44,6 +41,7 @@ class Wiki extends React.Component {
                         <td>74</td>
                         <td>31</td>
                     </tr>
+                    </tbody>
                 </table>
                 </div>
                 <br></br>
@@ -64,8 +62,10 @@ class Wiki extends React.Component {
                         
                 <div style={{display: 'flex', alignContent: 'center'}} >
                 <table style={{alignContent: 'flex-end'}}>
+                
                 <caption>The overall results of the Faster R-CNN on the grain dataset.
                      The trained model can be tested under the tab data analysis</caption>
+                     <tbody>
                 <tr>
                         <th>mAP [%]</th>
                         <th>Accuracy [%]</th>
@@ -76,6 +76,7 @@ class Wiki extends React.Component {
                         <td>83</td>
                         <td>62</td>
                     </tr>
+                    </tbody>
                 </table>
                 </div>
                         </p>
@@ -91,7 +92,7 @@ class Wiki extends React.Component {
                 <figure>
                 <figcaption className="ssd">Figure 1: Architecture of the SSD 
                 feed-forward convolutional network with a 512 x 512 input size</figcaption>
-                    <img class="img_ssd1" src="images/ssd.png" width="10%"/>
+                    <img className="img_ssd1" src="images/ssd.png" width="10%"/>
             </figure>
 
 
@@ -100,7 +101,7 @@ class Wiki extends React.Component {
                 <figure>
                 <figcaption>Figure 2: Architecture of the faster RCNN feed-forward convolutional network with a variable input size</figcaption>
                 
-                        <img class="img_rcnn1" src="images/frcnn.png"/>
+                        <img className="img_rcnn1" src="images/frcnn.png"/>
                 </figure>
 
             </div>

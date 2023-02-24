@@ -128,7 +128,7 @@ let data = [
 
 		<div className="App">
 			<div>
-      <div class="return"></div>
+      <div className="return"></div>
 
 <br></br><br></br>
 
@@ -168,7 +168,7 @@ let data = [
       
 
     
-<div class="wrapper">
+<div className="wrapper">
       <div id="first">
      
         <button onClick={()=>setPrint(true) }> Maize bg </button>

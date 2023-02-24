@@ -5,7 +5,7 @@ import CardItem from './CardItem';
 
 import './Contact.css';
 
-// const Contact = () => {
+
 class Contact extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0)
@@ -15,7 +15,7 @@ class Contact extends React.Component {
             <>
             <Navbar />
             
-            <div class="greenbg">
+            <div className="greenbg">
             <br></br>
             <div className="contact">
 
@@ -43,8 +43,8 @@ class Contact extends React.Component {
                 <h2 className="leftStudent">Student:</h2>
                 <div className="text-center">
                 <p>
-                    Hannes Gelbhardt is doing his master with a focus on AI in <br/> 
-                    computer science at the University of Bremen <br/> 
+                    Hannes Gelbhardt is doing his master with a focus on AI in computer science <br/> 
+                    at the University of Bremen and works at the BIK as research assistant<br/> 
                     <b>E-Mail: ha_ge@uni-bremen.de</b>
 
                 </p>
@@ -62,7 +62,6 @@ class Contact extends React.Component {
             </div>
 
             <Footer />
-            {/* <br></br> */}
             </>
             
         );

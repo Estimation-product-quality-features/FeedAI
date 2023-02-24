@@ -29,9 +29,6 @@ const useStyles = makeStyles({navbarDisplayFlex: {
 
 
 const navLinks = [
-  //  { title: `add evaluation`, path: `/add-evaluation` },
-  //  { title: `add`, path: `/add` },
-  //  { title: `history`, path: `/history` },
     { title: `log in`, path: `/login`},
    
   ]

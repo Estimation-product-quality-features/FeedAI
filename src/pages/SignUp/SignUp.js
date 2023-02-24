@@ -36,23 +36,23 @@ const SignUp = ({history}) => {
 <>
         <Header />
 
-<div class="container" >
+<div className="container" >
 
 
-        <div class="center">
+        <div className="center">
    
 
         <div>
             <h1>Sign Up</h1>
             <form onSubmit={handleSignUp}>
-            <div class="form">
-                <label class="label">
+            <div className="form">
+                <label className="label">
                     Email
                    
                     </label>
                     <input name="email" type="email" placeholder="Email" />
                     <br></br><br></br>
-                    <label class="label">
+                    <label className="label">
                     Password
                     
                 </label>
@@ -66,7 +66,7 @@ const SignUp = ({history}) => {
                
                
                 </form>
-                <div class="return"></div>
+                <div className="return"></div>
                 <button onClick={() => history.goBack()}>Return</button>
 
               

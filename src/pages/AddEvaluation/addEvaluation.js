@@ -7,7 +7,6 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
 
-import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
@@ -53,6 +52,7 @@ let classesDir = {
   },
 }
 
+// Loading the models
 async function load_ssd_model() {
   await tf.ready();
   model_name = "ssd"
@@ -75,6 +75,8 @@ async function load_rcnn_model() {
   }
 }
 
+
+// Processing the input
 function process_input(img){
   const tfimg = tf.browser.fromPixels(img).toInt();
   const tfimgResized = tf.image.resizeNearestNeighbor(
@@ -95,15 +97,13 @@ async function detectFrame(img_url, model) {
   img.src = img_url;
   img.onload = function()
   	{
-  	console.log(`Loaded images for prediction`)
+  	console.log(``)
   	}
   	
   img.id = "imgCanvas";
-  const newImgWidth = 512;
-  const newImgHeight = 512;
   
-  //img.width = imgWidth //has to be defined for tensorflow pixel
-  //img.height = imgHeight // ^^
+  img.width = 512; //has to be defined for tensorflow pixel
+  img.height = 512; // ^^
 
   //needs to be appended somewhere else or otherwise be made visible
   src.appendChild(img);
@@ -150,20 +150,13 @@ function buildDetectedObjects(scores, threshold, boxes, classes, classesDir) {
 
 function renderPredictions(predictions, img) {
     const ctx = canvasRef.current.getContext("2d");
-    const hiddenCtx = hiddenCanvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.drawImage(img, 0, 0);
-
-    hiddenCtx.clearRect(0, 0, hiddenCtx.canvas.width, hiddenCtx.canvas.height);
-    hiddenCtx.drawImage(img, 0, 0);
 
     // Font options.
     const font = "16px sans-serif";
     ctx.font = font;
     ctx.textBaseline = "top";
-
-    hiddenCtx.font = font;
-    hiddenCtx.textBaseline = "top";
 
 
     //Getting predictions
@@ -196,22 +189,11 @@ function renderPredictions(predictions, img) {
       ctx.lineWidth = 4;
       ctx.strokeRect(x, y, width, height);
 
-      
-      // .. also for the hidden canvas 
-      hiddenCtx.strokeStyle = "#00FFFF";
-      hiddenCtx.lineWidth = 4;
-      hiddenCtx.strokeRect(x, y, width, height);
-
       // Draw the label background.
       ctx.fillStyle = "#00FFFF";
       const textWidth = ctx.measureText(item["label"] + " " + (100 * item["score"]).toFixed(2) + "%").width;
       const textHeight = parseInt(font, 10); // base 10
       ctx.fillRect(x, y, textWidth + 4, textHeight + 4);
-
-      hiddenCtx.fillStyle = "#00FFFF";
-      const textWidthHidden = hiddenCtx.measureText(item["label"] + " " + (100 * item["score"]).toFixed(2) + "%").width;
-      const textHeightHidden = parseInt(font, 10); // base 10
-      hiddenCtx.fillRect(x, y, textWidthHidden + 4, textHeightHidden + 2);
   });
 
   detections.forEach(item => {
@@ -221,14 +203,10 @@ function renderPredictions(predictions, img) {
     // Draw the text last to ensure it's on top.
     ctx.fillStyle = "#000000";
     ctx.fillText(item["label"] + " " + (100*item["score"]).toFixed(2) + "%", x, y);
-
-    hiddenCtx.fillStyle = "#000000";
-    hiddenCtx.fillText(item["label"] + " " + (100*item["score"]).toFixed(2) + "%", x, y);
   });
   var feedback = document.getElementById('feedbackPredict');
   feedback.innerText = "Ready!";
   feedback.style.color = "rgb(43, 78, 54)";
-  console.log('Done predicting');
 };
 
 
@@ -294,25 +272,11 @@ class AddEvaluation extends React.Component {
     this.downloadCanvas = this.downloadCanvas.bind(this)
   }
 
-  /////////////////////////////////////////////////////////
-  // Handle changes
-  /////////////////////////////////////////////////////////
-
   downloadCanvas(event){
-    // trigger when clicked "download"
-    console.log(`in download canvas`);
     // get canvas
-    // var myCanvas = document.getElementById("canvasTop");
-    var myCanvas = document.getElementById("hiddenCanvas");
-    // download canvas
-      // create data URL
-      // download via vanilla JS
+    var myCanvas = document.getElementById("canvasTop");
 
-    // const ctx = canvasRef.current.getContext("2d");
-    // const imageData = ctx.getImageData(0, 0, 512, 512);
-
-    // console.log( tf.memory().numTensors);
-    // // Overlay images
+    // Overlay images
     var dataURL = myCanvas.toDataURL("image/png");
     var a = document.createElement('a');
     a.href =  dataURL;
@@ -324,92 +288,47 @@ class AddEvaluation extends React.Component {
 
 
   handleInputChange(event) {
-  	const maxWidth = 512
+  	const maxRes = 512;
     const ctx = canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     var img = new Image()
     var imgUrl = URL.createObjectURL(event.target.files[0])
     img.src = imgUrl
 
+
+
+    
+
     img.onload = (() => 
   	{
+
+        var newHeight = maxRes;
+        var newWidth = maxRes;
+
+        if ( img.width > img.height) {
+          newHeight = maxRes / img.width * img.height;
+        } else {
+          newWidth = maxRes / img.height * img.width;
+        }
+
+        
+        var canvasHidden = document.createElement('canvas'),
+        ctxHidden = canvasHidden.getContext('2d');
+
+
+        // set its dimension to target size
+        canvasHidden.width = 512;
+        canvasHidden.height = 512;
+
+        // draw source image into the off-screen canvas: 
+        ctxHidden.drawImage(img, 0, 0, 512, 512);
+
+      // Create URL Object
       this.setState({
-        imgPred: URL.createObjectURL(event.target.files[0])
-      })
-
-  		// var myCanvas = document.getElementById("canvasTop");
-      //var myCanvasHidden = document.getElementById("hiddenCanvas");
-  		const tfimg = tf.browser.fromPixels(img).toInt();
-      
-      // document.body.appendChild(hiddenCanvas);
-
-      console.log(`Imgshape: ${tfimg.shape}`)
-  		const newHeigth = tf.cast(maxWidth/tfimg.shape[1]*tfimg.shape[0], 'int32').dataSync()
-      
-
-      // Throws an error if the same image is uploaded again
-  		const tfImgResized = tf.image.resizeNearestNeighbor(
-  												tfimg, [maxWidth, newHeigth], true
-  											);
-
-      console.log(`Imgshape new: ${tfImgResized.shape}`)
-      console.log(`Imagedtype: ${tfImgResized.dtype}`)
-
-
-            // Create hidden canvas
-      //https://stackoverflow.com/questions/10652513/html5-dynamically-create-canvas#10652568
-      var hiddenCanvas = document.createElement('canvas');
-      hiddenCanvas.setAttribute('hidden', true);
-      hiddenCanvas.setAttribute('width', maxWidth);
-      hiddenCanvas.setAttribute('height', newHeigth);
-
-      // ctx.drawImage(tfImgResized, 0, 0);
-
-
-
-      
-      tf.browser.toPixels(tfImgResized, hiddenCanvas).then(()=>{
-        tfImgResized.dispose();
-        console.log("Printed first")
+        imgPred: canvasHidden.toDataURL()
       });
 
-
-
-      ctx.canvas.width = maxWidth;
-      ctx.canvas.height = maxWidth;
-
-
-      // const imageData = hiddenCanvas.getImageData(0, 0, 512, 512);
-
-  		// tf.browser.toPixels(tfimg, ctx).then(()=>{
-  		// 	tfimg.dispose();
-      //   console.log("Printed first")
-  		// });
-
-      // tf.browser.toPixels(tfimg, myCanvasHidden).then(()=>{
-      //   console.log("Printed second")
-  		// 	tfimg.dispose();
-  		// });
-  		
-      // Resize input image
-  		// const newHeigth = tf.cast(maxWidth/tfimg.shape[1]*tfimg.shape[0], 'int32').dataSync()
-  		// const tfImgResized = tf.image.resizeNearestNeighbor(
-  		// 										tfimg, [maxWidth, newHeigth], true
-  		// 									);
-  		// tf.browser.toPixels(tfImgResized, myCanvas).then(()=>{
-  		// 	tfImgResized.dispose();
-  		// });
-  		
-  		// console.log(`Loaded Input images for prediction`);
-  		
   	});
-  	
-  	//img.width = width;
-  	//img.height = height;
-  	
-    // const tensor_img = tf.browser.fromPixels(img);
-    // console.log(`Imgshape: ${tensor_img.shape}`)
-
   }
 
   handleClickCard(img) {
@@ -426,7 +345,6 @@ class AddEvaluation extends React.Component {
     } else {
       currentModel = load_rcnn_model();
     }
-    //event.target.value;
   }
 
   handleClickCard2(imgSrc) {
@@ -438,23 +356,12 @@ class AddEvaluation extends React.Component {
     	const tfImgResized = tf.image.resizeNearestNeighbor(
   												tfImg, [512,512], true
   											);
-  		//var imgResized = new Image()
-  		//imgResized.id = 'resized'
-  		//const myCanvas = document.getElementById('resized')
-  		//tf.browser.toPixels(myCanvas)
       ctx.drawImage(tfImgResized, 0, 0);
     };
   }
-
-  //     ctx.drawImage(tfImgResized, 0, 0);
-  //     ctxHidden.drawImage(tfImg, 0, 0);
-  //   };
-  // }
-
   returnImageURL() {
     var predCanvas = document.getElementById("canvasTop");
     var dataURL = predCanvas.toDataURL("image/png");
-    // this.returnImageURL()
     return dataURL
   }
 
@@ -467,10 +374,8 @@ class AddEvaluation extends React.Component {
     return (
         <div className= "Detection">
         <><Navbar />
-        {/* Some spacing  */}
-        <br></br>
 
-        <Container>
+        <div style={{display: 'flex', justifyContent: 'center', padding: '5%'}}>
           <Grid container spacing={6}>
               <div style={{display: 'flex', gap: '40px'}}>
                 <div>
@@ -517,15 +422,11 @@ class AddEvaluation extends React.Component {
                        variant="contained"
                        color='inherit'
                        size='large'
-                      //  onClick={() => detectFrame(this.state.imgPred, currentModel)}>
                        onClick={() => detectFrame(this.state.imgPred, currentModel)}>
                       Predict image
                       </Button>
                   </div>
-                  {/* <br></br> */}
                   <h3 id='feedbackPredict' style={{color: 'rgb(43, 78, 54)'}}>{this.state.feedbackPredict}</h3>
-                  {/* 'rgb(245,245,245)' */}
-                  {/* <br></br> */}
                   <Card>
                   <div id="wrapper">
                     <img src={this.state.imgPred} alt="predict image"/>
@@ -546,7 +447,6 @@ class AddEvaluation extends React.Component {
                       />
                  </div>
                   </Card>
-
                   <br></br>
                  <div style={{display: 'flex', justifyContent: 'center'}}>
                  <div style={{display: 'flex', justifyContent: 'left'}}>
@@ -558,12 +458,7 @@ class AddEvaluation extends React.Component {
                   <div className="download" style={{display: 'flex', justifyContent: 'right'}} onClick={() => this.downloadCanvas(this.state.imgPred)} > 
                   
                   <label className="custom-file-download">
-                  
-                  {/* <a href={this.state.imgPred} download> */}
-                    {/* var img_test = canvasRef.current.toDataURL("image/png");
-                    document.write('<img src="' + img_test + '" width="512" height="512"/>'); */}
                      <i className="fa fa-cloud-download" variant="contained" ></i> DOWNLOAD IMAGE
-                     {/* </a> */}
                   </label>
 
                   </div>
@@ -571,17 +466,24 @@ class AddEvaluation extends React.Component {
                   </div>
 
                 </div>
-
-                {/* <div>
-                <h1>Description</h1>
-                  <br></br>
+                <div>
+                <br></br><br></br><br></br><br></br>
+                <br></br><br></br><br></br><br></br>
+                <h1>Explanation</h1>
+                <br></br>
                   <p>
-                    This site gives an interface to the trained models explained in the Wiki page.
+                    The image desiplayed in the left canvas will be predicted when the button 'PREDICT IMAGE' is pressed.<br/>
+                    The drop down menue gives the option to choose between the SSD and FRCNN model.<br/>
+                    A image can be either chosen by clicking on one of the images provided in the left panel or uploaded from a local file.<br/>
+                    While predicting different resolutions is possible with the models the canvas is optimized to display images with 512x512 pixels.<br/>
+                    All uploaded images will be resized to this resolution, so that the performance of the models might suffer significant.<br/>
+                    The (predicted) images can can be downloaded.
+
                   </p>
-                </div> */}
+                </div>
            </div>
           </Grid>
-        </Container>
+        </div>
         {/* Some spacing  */}
         <br></br> <br></br> <br></br> <br></br>
         <br></br> <br></br> <br></br> <br></br>
