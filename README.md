@@ -5,7 +5,7 @@ The compound feed industry can produce many feed mixtures up to many different i
 After milling, samples of the flour produced in this use case are evaluated on its particle size using deep learning algorithms. In this repo, we develop a quality traking tool that automatically detects, classifies and counts partially crushed and uncrushed seeds on images taken from the produced flour, so that engineers can subsequently use these results for evaluating the flour quality and adjusting better the mill parameters in future production charges. 
 
 <br>
-<img src="./public/images/grain_startpage.png"/>
+<img src="./public/images/.png"/>
 <br>
 
 ## About
@@ -136,7 +136,7 @@ The code documentation is provided along the relevant code lines.
 ## Contributing
 Pull requests for minor changes are welcome. For major changes, please open an issue or fork the repository first to discuss what you would like to change. In oder words:
 
-* Issue:If you spotted a bug, have an idea for an improvement or a new feature, please open a issue. Please open an issue in both cases: If you want to work on in yourself and if you want to leave it to us to work on it.
+* Issue: If you spotted a bug, have an idea for an improvement or a new feature, please open a issue. Please open an issue in both cases: If you want to work on in yourself and if you want to leave it to us to work on it.
 * Fork: If you want to work on an issue yourself please fork the repository, then develop the feature in your copy of the repository and finally file a pull request to merge it into our repository.
 
 ## Cite
