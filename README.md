@@ -128,14 +128,21 @@ Finally deploy your webapp using
 > ```sudo docker exec -it grain_prod firebase deploy --only hosting ```
 
 A url should be displayed where you can visit your site online.
-    
+
+## Documentation
+Our SoftwareX paper: "" provides a concise description of the software. 
+The code documentation is provided along the relevant code lines.
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests for minor changes are welcome. For major changes, please open an issue or fork the repository first to discuss what you would like to change. In oder words:
 
-Please make sure to update tests as appropriate. 
+####Issue. If you spotted a bug, have an idea for an improvement or a new feature, please open a issue. Please open an issue in both cases: If you want to work on in yourself and if you want to leave it to us to work on it.
+####Fork. If you want to work on an issue yourself please fork the repository, then develop the feature in your copy of the repository and finally file a pull request to merge it into our repository.
 
+## Cite
+If you are using FeedAi in your academic work please cite it by referencing our SoftwareX paper:
+...
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+This software is licensed under the MIT license. For more information, read the file [MIT](https://choosealicense.com/licenses/mit/)
 
