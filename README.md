@@ -14,7 +14,7 @@ The models of Feed AI are created in Python2 and use the Tensorflow Object Detec
 <br>
 
 ---
-## 🧰 Requirements - 
+## 🧰 Requirements 
 
 <a href="https://www.w3.org/html/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://reactjs.org/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a> 
 <br></br>
@@ -27,7 +27,7 @@ The models of Feed AI are created in Python2 and use the Tensorflow Object Detec
 
 ---
 ## Installation
-# FeedAI_models
+### FeedAI_models
 You can install the TensorFlow Object Detection API either with Python Package Installer (pip) or Docker. For local runs we recommend using Docker.
 Clone the TensorFlow repository and proceed to one of the installation options.
 
@@ -35,7 +35,7 @@ Clone the TensorFlow repository and proceed to one of the installation options.
 git clone https://github.com/tensorflow/models.git
 ```
 
-### Docker Installation
+#### Docker Installation
 
 ```bash
 # From the root of the git repository
@@ -43,7 +43,7 @@ docker build -f research/object_detection/dockerfiles/tf1/Dockerfile -t od .
 docker run -it od
 ```
 
-### Python Package Installation
+#### Python Package Installation
 
 ```bash
 cd models/research
@@ -59,7 +59,7 @@ python -m pip install --use-feature=2020-resolver .
 python object_detection/builders/model_builder_tf1_test.py
 ```
 
-# FeedAI_framework
+### FeedAI_framework
 The easiest way to run the app locally is to clone the repository and run the node pachage manager via  
 > npm install
 
