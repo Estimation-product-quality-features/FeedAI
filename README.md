@@ -10,8 +10,8 @@ After milling, samples of the flour produced in this use case are evaluated on i
 
 ## About
 FeedAI consists of two packages: 
-*  The package AImodels handles the deep learning models which were created for this application case. The package Framework contains the design of a webpage which lets you run different AI-models in near real time and visualize its outputs in a simple form.  
-*  The framework of FeedAI was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and Firebase running in a docker image to provide security and to help to build, run and deploy successfully the models in the webpage. The models of Feed AI are created in Python2 and use the Tensorflow Object Detection API v1.12.0 
+*  The package AI-models handles the deep learning models which were created for this application case. The models of FeedAI are created in Python2 and use the Tensorflow Object Detection API v1.12.0 
+*  The package Framework contains the design of a webpage which lets you run different AI-models in near real time and visualize and download its outputs in a simple form. The framework of FeedAI was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and Firebase running in a docker image to provide security and to help to build, run and deploy successfully the models in the webpage. 
 
 ## 🧰 Requirements 
 
