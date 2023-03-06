@@ -1,4 +1,4 @@
-# Product Quality Tracking Tool on the Example of Agri-Food Industries 🌾  
+# FeedAI: Product Quality Tracking Tool on the Example of Agri-Food Industries 🌾  
 ## [Visit this site here!](https://grain-52356.web.app/)
 
 ### An intuitive and helpful software tool for identifying and capturing the product quality of industrial processes. As a case study, the production of flour in the context of the compound feed industry is shown.
