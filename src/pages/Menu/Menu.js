@@ -19,8 +19,6 @@ class Menu extends React.Component {
   }
 
   render() {
-
-    // https://stackoverflow.com/questions/40987309/react-display-loading-screen-while-dom-is-rendering#40989121
       return (
         <div >
             <div id='spinner' className='show'
@@ -48,9 +46,9 @@ class Menu extends React.Component {
               height="1080"
               onCanPlayThrough={() => this.display_content()}
               />
-              <h1>Product Quality Tracking Software</h1>
+              <h1>Product Quality Tracker</h1>
               
-              <p>Whole Grain Detection for the agri-food sector</p>
+              <p>Capturing qualitative characteristics of seeds for the agri-food sector</p>
                 
               <div className='hero-btns'>
                   <Button
@@ -61,6 +59,9 @@ class Menu extends React.Component {
                     GET STARTED
                   </Button>
               </div>
+              <p>
+              Capturing qualitative characteristics of seeds for the agri-food sector
+              </p>
             </div>
             <Footer/>
           </div>
