@@ -207,8 +207,24 @@ function renderPredictions(predictions, img) {
   var feedback = document.getElementById('feedbackPredict');
   feedback.innerText = "Ready!";
   feedback.style.color = "rgb(43, 78, 54)";
+  downloadCanvas();
 };
 
+
+
+function downloadCanvas(){
+  // get canvas
+  var myCanvas = document.getElementById("canvasTop");
+  // Overlay images
+  var dataURL = myCanvas.toDataURL("image/png");
+  var a = document.createElement('a');
+  a.href =  dataURL;
+  a.download = `prediction_${model_name}.png`;
+  a.saveAs = true;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
 
 // List of images
 const itemData = [
@@ -379,7 +395,15 @@ class AddEvaluation extends React.Component {
           <Grid container spacing={6}>
               <div style={{display: 'flex', gap: '40px'}}>
                 <div>
-                  <h1>Select an image</h1>
+                  <h1>Select or 
+                  {/* <div style={{display: 'flex', justifyContent: 'left'}}> */}
+                  <label className="no-bg-upload">
+                  <input type="file" onChange={this.handleInputChange}/>
+                     <i className="fa fa-cloud-upload"></i> upload 
+                     {/* variant="contained" */}
+                  </label>
+                  an image
+                  </h1>
                   <br></br>
                   <ImageList sx={{heigth:128, width:128}} cols={2} rowHeight={256}>
                       {itemData.map((item) => (
@@ -399,34 +423,42 @@ class AddEvaluation extends React.Component {
                       ))}
                     </ImageList>
                 </div>
-              <div>
-                  <h1>Model detection</h1>
-                  <br></br>
-
-                  <div style={{display: 'flex', gap: '30px', justifyContent: 'center'}}>
-                  <Box sx={{height:'auto', width: '45%'}}>
-                      <FormControl fullWidth variant="filled" color="primary">
-                          <NativeSelect
-                              id="modelID"
-                              defaultValue={model_name}
-                              color='primary'
-                              onChange={this.handleMenuChange}
-                              style={{background: "#D3D3D3", value: "M", height: '50px', width: '180px', paddingInlineStart:'8px', borderRadius:'5px'}}
-                          >
-                          <option value="ssd">SSD MobileNetV1</option>
-                          <option value="frcnn">Faster R-CNN</option>
-                          </NativeSelect>
-                      </FormControl>
-                      </Box>
-                      <Button
+              <div className='parent'>
+              <h1>Model detection</h1>
+                <div>
+                  <h3>Select a model:</h3>
+                    <div style={{display: 'flex', justifyContent: 'left'}}>
+                    <Box sx={{height:'auto', width: '45%'}}>
+                        <FormControl fullWidth variant="filled" color="primary">
+                            <NativeSelect
+                                id="modelID"
+                                defaultValue={model_name}
+                                color='primary'
+                                onChange={this.handleMenuChange}
+                                style={{background: "#D3D3D3", value: "M", height: '50px', width: '180px', paddingInlineStart:'8px', borderRadius:'5px'}}
+                            >
+                            <option value="ssd">SSD MobileNetV1</option>
+                            <option value="frcnn">Faster R-CNN</option>
+                            </NativeSelect>
+                        </FormControl>
+                        </Box>
+                    </div>
+                  </div>
+                  <div style={{marginLeft:'15%', justifyContent: 'right'}}>
+                  <h3 style={{justifyContent:'right'}}> Run prediction:</h3>
+                  <Button
                        variant="contained"
                        color='inherit'
                        size='large'
                        onClick={() => detectFrame(this.state.imgPred, currentModel)}>
                       Predict image
                       </Button>
+
                   </div>
+                  <div>
                   <h3 id='feedbackPredict' style={{color: 'rgb(43, 78, 54)'}}>{this.state.feedbackPredict}</h3>
+                  </div>
+                  
                   <Card>
                   <div id="wrapper">
                     <img src={this.state.imgPred} alt="predict image"/>
@@ -447,7 +479,7 @@ class AddEvaluation extends React.Component {
                       />
                  </div>
                   </Card>
-                  <br></br>
+                  {/* <br></br>
                  <div style={{display: 'flex', justifyContent: 'center'}}>
                  <div style={{display: 'flex', justifyContent: 'left'}}>
                   <label className="custom-file-upload">
@@ -463,7 +495,7 @@ class AddEvaluation extends React.Component {
 
                   </div>
 
-                  </div>
+                  </div> */}
 
                 </div>
                 <div>
@@ -472,12 +504,19 @@ class AddEvaluation extends React.Component {
                 <h1>Explanation</h1>
                 <br></br>
                   <p>
-                    The image desiplayed in the left canvas will be predicted when the button 'PREDICT IMAGE' is pressed.<br/>
+                    1.) From the left an image can be selected or uploaded,
+                    then the image will be resized to 512x512 and displayed. <br/>
+                    2.) From the menu the SSD or FRCNN model can be selected for 
+                     predicting seed locations and types. <br/>
+                    3.) By pressing "Predict Image" the image will be analysed by the model
+                     and the predictions will be displayed and downloaded. <br/>
+
+                    {/* The image desiplayed in the left canvas will be predicted when the button 'PREDICT IMAGE' is pressed.<br/>
                     The drop down menue gives the option to choose between the SSD and FRCNN model.<br/>
                     A image can be either chosen by clicking on one of the images provided in the left panel or uploaded from a local file.<br/>
                     While predicting different resolutions is possible with the models the canvas is optimized to display images with 512x512 pixels.<br/>
                     All uploaded images will be resized to this resolution, so that the performance of the models might suffer significant.<br/>
-                    The (predicted) images can can be downloaded.
+                    The (predicted) images can can be downloaded. */}
 
                   </p>
                 </div>
