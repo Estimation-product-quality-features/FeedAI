@@ -28,7 +28,7 @@ class Wiki extends React.Component {
 
                 <div style={{display: 'flex', alignContent: 'center'}} >
                 <table style={{alignContent: 'center'}}>
-                <caption>The overall results of the SSD model on the grain dataset.
+                <caption>Table 1: The overall results of the SSD model on the grain dataset.
                      The trained model can be tested under the tab data analysis</caption>
                      <tbody>
                     <tr>
@@ -63,7 +63,7 @@ class Wiki extends React.Component {
                 <div style={{display: 'flex', alignContent: 'center'}} >
                 <table style={{alignContent: 'flex-end'}}>
                 
-                <caption>The overall results of the Faster R-CNN on the grain dataset.
+                <caption>Table 2: The overall results of the Faster R-CNN on the grain dataset.
                      The trained model can be tested under the tab data analysis</caption>
                      <tbody>
                 <tr>
