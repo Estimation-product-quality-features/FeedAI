@@ -57,7 +57,7 @@ python object_detection/builders/model_builder_tf1_test.py
 ```
 
 ### FeedAI_framework
-The easiest way to run the app locally is to clone the repository and run the node pachage manager via  
+The easiest way to run the app locally is to clone the repository and run the node package manager via  
 > npm install
 
 followed by  
