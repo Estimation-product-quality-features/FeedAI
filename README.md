@@ -9,9 +9,9 @@ After milling, samples of the flour produced in this use case are evaluated on i
 <br>
 
 ## About
-FeedAI consists of two packages: 
-*  The package AI-models handles the deep learning models which were created for this application case. The models of FeedAI are created in Python3 and use the Tensorflow Object Detection API v1.12.0 ([TF API](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1.md)) and its comulative counting mode module from [TF counting API](https://github.com/ahmetozlu/tensorflow_object_counting_api).
-*  The package Framework contains the design of a webpage which lets you run different AI-models in near real time and visualize and download its outputs in a simple form. The framework of FeedAI was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and Firebase running in a docker image to provide security and to help to build, run and deploy successfully the models in the webpage. 
+ProductQualityAI consists of two packages: 
+*  The package PQ_AImodels handles the deep learning models which were created for this application case. The models of FeedAI are created in Python3 and use the Tensorflow Object Detection API v1.12.0 ([TF API](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1.md)) and its comulative counting mode module from [TF counting API](https://github.com/ahmetozlu/tensorflow_object_counting_api).
+*  The package PQ_Framework contains the design of a webpage which lets you run different AI-models in near real time and visualize and download its outputs in a simple form. The framework of FeedAI was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and Firebase running in a docker image to provide security and to help to build, run and deploy successfully the models in the webpage. 
 
 ## 🧰 Requirements 
 
@@ -24,7 +24,7 @@ FeedAI consists of two packages:
 </a> <a href="https://firebase.google.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/> </a>
 
 ## Installation
-### FeedAI_models
+### PQ_AImodels
 You can install the TensorFlow Object Detection API either with Python Package Installer (pip) or Docker. For local runs we recommend using Docker.
 Clone the TensorFlow repository and proceed to one of the installation options.
 
@@ -56,7 +56,7 @@ python -m pip install --use-feature=2020-resolver .
 python object_detection/builders/model_builder_tf1_test.py
 ```
 
-### FeedAI_framework
+### PQ_Framework
 The easiest way to run the app locally is to clone the repository and run the node package manager via  
 > npm install
 
