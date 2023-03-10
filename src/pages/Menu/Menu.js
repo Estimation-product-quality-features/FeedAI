@@ -59,9 +59,6 @@ class Menu extends React.Component {
                     GET STARTED
                   </Button>
               </div>
-              <p>
-              Capturing qualitative characteristics of seeds for the agri-food sector
-              </p>
             </div>
             <Footer/>
           </div>

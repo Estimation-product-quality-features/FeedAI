@@ -396,11 +396,9 @@ class AddEvaluation extends React.Component {
               <div style={{display: 'flex', gap: '40px'}}>
                 <div>
                   <h1>Select or 
-                  {/* <div style={{display: 'flex', justifyContent: 'left'}}> */}
                   <label className="no-bg-upload">
                   <input type="file" onChange={this.handleInputChange}/>
                      <i className="fa fa-cloud-upload"></i> upload 
-                     {/* variant="contained" */}
                   </label>
                   an image
                   </h1>
@@ -424,18 +422,17 @@ class AddEvaluation extends React.Component {
                     </ImageList>
                 </div>
               <div className='parent'>
-              <h1>Model detection</h1>
-                <div>
-                  <h3>Select a model:</h3>
+                <div style={{marginRight:'10%', justifyContent: 'left'}}>
+                <h1>Select a model:</h1>
                     <div style={{display: 'flex', justifyContent: 'left'}}>
-                    <Box sx={{height:'auto', width: '45%'}}>
+                    <Box sx={{marginTop:'13%', height:'auto', width: '45%'}}>
                         <FormControl fullWidth variant="filled" color="primary">
                             <NativeSelect
                                 id="modelID"
                                 defaultValue={model_name}
                                 color='primary'
                                 onChange={this.handleMenuChange}
-                                style={{background: "#D3D3D3", value: "M", height: '50px', width: '180px', paddingInlineStart:'8px', borderRadius:'5px'}}
+                                style={{background: "#D3D3D3", value: "M", height: '43px', width: '180px', paddingInlineStart:'8px', borderRadius:'5px'}}
                             >
                             <option value="ssd">SSD MobileNetV1</option>
                             <option value="frcnn">Faster R-CNN</option>
@@ -444,18 +441,19 @@ class AddEvaluation extends React.Component {
                         </Box>
                     </div>
                   </div>
-                  <div style={{marginLeft:'15%', justifyContent: 'right'}}>
-                  <h3 style={{justifyContent:'right'}}> Run prediction:</h3>
+                  <div style={{justifyContent: 'right'}}>
+                  <h1 style={{ justifyContent: 'right'}}> Run prediction:</h1>
                   <Button
                        variant="contained"
                        color='inherit'
                        size='large'
+                       style={{marginLeft:'25%', marginTop:'10%', justifyContent: 'right'}}
                        onClick={() => detectFrame(this.state.imgPred, currentModel)}>
                       Predict image
                       </Button>
 
                   </div>
-                  <div>
+                  <div style={{width:'100%'}}>
                   <h3 id='feedbackPredict' style={{color: 'rgb(43, 78, 54)'}}>{this.state.feedbackPredict}</h3>
                   </div>
                   
@@ -479,24 +477,6 @@ class AddEvaluation extends React.Component {
                       />
                  </div>
                   </Card>
-                  {/* <br></br>
-                 <div style={{display: 'flex', justifyContent: 'center'}}>
-                 <div style={{display: 'flex', justifyContent: 'left'}}>
-                  <label className="custom-file-upload">
-                  <input type="file" onChange={this.handleInputChange}/>
-                     <i className="fa fa-cloud-upload" variant="contained"></i> UPLOAD IMAGE
-                  </label>
-                  </div>
-                  <div className="download" style={{display: 'flex', justifyContent: 'right'}} onClick={() => this.downloadCanvas(this.state.imgPred)} > 
-                  
-                  <label className="custom-file-download">
-                     <i className="fa fa-cloud-download" variant="contained" ></i> DOWNLOAD IMAGE
-                  </label>
-
-                  </div>
-
-                  </div> */}
-
                 </div>
                 <div>
                 <br></br><br></br><br></br><br></br>
@@ -509,16 +489,8 @@ class AddEvaluation extends React.Component {
                     2.) From the menu the SSD or FRCNN model can be selected for 
                      predicting seed locations and types. <br/>
                     3.) By pressing "Predict Image" the image will be analysed by the model
-                     and the predictions will be displayed and downloaded. <br/>
-
-                    {/* The image desiplayed in the left canvas will be predicted when the button 'PREDICT IMAGE' is pressed.<br/>
-                    The drop down menue gives the option to choose between the SSD and FRCNN model.<br/>
-                    A image can be either chosen by clicking on one of the images provided in the left panel or uploaded from a local file.<br/>
-                    While predicting different resolutions is possible with the models the canvas is optimized to display images with 512x512 pixels.<br/>
-                    All uploaded images will be resized to this resolution, so that the performance of the models might suffer significant.<br/>
-                    The (predicted) images can can be downloaded. */}
-
-                  </p>
+                     and the predictions will be displayed and automatically downloaded. <br/>
+                     </p>
                 </div>
            </div>
           </Grid>
