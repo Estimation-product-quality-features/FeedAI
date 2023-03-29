@@ -46,7 +46,7 @@ class Menu extends React.Component {
               />
               <h1>Product Quality Tracker</h1>
               
-              <p>Capturing qualitative characteristics of seeds for the agri-food sector</p>
+              <p>Capturing qualitative and quantitativ characteristics of seeds for the agri-food sector</p>
                 
               <div className='hero-btns'>
                   <Button
