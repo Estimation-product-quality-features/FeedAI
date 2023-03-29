@@ -1,7 +1,6 @@
 import React from "react";
 import '../../App.css';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import FeaturesTiles from "../../components/FeaturesTiles";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 // One page
@@ -9,7 +8,6 @@ import { Button } from '../../components/Button';
 import '../../components/HeroSection.css';
 import './Menu.css';
 
-// function Menu() {
 class Menu extends React.Component {
   display_content(){
     var spinner_div = document.getElementById("spinner");
