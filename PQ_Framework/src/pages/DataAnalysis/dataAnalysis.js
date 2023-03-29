@@ -304,7 +304,6 @@ class DataAnalyis extends React.Component {
 
 
   handleInputChange(event) {
-  	const maxRes = 512;
     const ctx = canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     var img = new Image()
@@ -316,28 +315,17 @@ class DataAnalyis extends React.Component {
     
 
     img.onload = (() => 
-  	{
-
-        var newHeight = maxRes;
-        var newWidth = maxRes;
-
-        if ( img.width > img.height) {
-          newHeight = maxRes / img.width * img.height;
-        } else {
-          newWidth = maxRes / img.height * img.width;
-        }
-
-        
-        var canvasHidden = document.createElement('canvas'),
-        ctxHidden = canvasHidden.getContext('2d');
+  	{   
+      var canvasHidden = document.createElement('canvas'),
+      ctxHidden = canvasHidden.getContext('2d');
 
 
-        // set its dimension to target size
-        canvasHidden.width = 512;
-        canvasHidden.height = 512;
+      // set its dimension to target size
+      canvasHidden.width = 512;
+      canvasHidden.height = 512;
 
-        // draw source image into the off-screen canvas: 
-        ctxHidden.drawImage(img, 0, 0, 512, 512);
+      // draw source image into the off-screen canvas: 
+      ctxHidden.drawImage(img, 0, 0, 512, 512);
 
       // Create URL Object
       this.setState({

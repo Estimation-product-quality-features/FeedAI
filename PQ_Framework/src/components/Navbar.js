@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from './Button';
 
-
-import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
-import App from '../App';
-import { rgbToHex } from '@material-ui/core';
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -50,7 +45,7 @@ function Navbar() {
                     </NavLink>
                   </li>
                   <li className='nav-item'>
-                    <NavLink to='/data-analyis' className='nav-links' activeStyle={{background: "rgb(106, 134, 115)"}} onClick={closeMobileMenu}>  
+                    <NavLink to='/data-analysis' className='nav-links' activeStyle={{background: "rgb(106, 134, 115)"}} onClick={closeMobileMenu}>  
                     <h3>Data Analysis</h3>
                     </NavLink>
                   </li>
