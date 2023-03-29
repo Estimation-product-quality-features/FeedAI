@@ -45,12 +45,12 @@ function Navbar() {
           <div className='navbar-container2'>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                   <li className='nav-item'>
-                    <NavLink to='/menu' className='nav-links' activeStyle={{background: "rgb(106, 134, 115)"}} onClick={closeMobileMenu}>  
+                    <NavLink to='/startpage' className='nav-links' activeStyle={{background: "rgb(106, 134, 115)"}} onClick={closeMobileMenu}>  
                       <h3>Home</h3>
                     </NavLink>
                   </li>
                   <li className='nav-item'>
-                    <NavLink to='/add-Evaluation' className='nav-links' activeStyle={{background: "rgb(106, 134, 115)"}} onClick={closeMobileMenu}>  
+                    <NavLink to='/data-analyis' className='nav-links' activeStyle={{background: "rgb(106, 134, 115)"}} onClick={closeMobileMenu}>  
                     <h3>Data Analysis</h3>
                     </NavLink>
                   </li>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './addEvaluation.css';
+import './dataAnalysis.css';
 
 import { Button } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
@@ -276,7 +276,7 @@ var hiddenCanvasRef = React.createRef();
 var a = "Ready!";
 
 
-class AddEvaluation extends React.Component {
+class DataAnalyis extends React.Component {
   constructor(props){
     super(props);
     this.state= {
@@ -506,7 +506,7 @@ class AddEvaluation extends React.Component {
     }
   }
 
- export default AddEvaluation;
+ export default DataAnalyis;
 
 
 

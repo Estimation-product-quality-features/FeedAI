@@ -6,9 +6,9 @@ import Footer from "../../components/Footer";
 // One page
 import { Button } from '../../components/Button';
 import '../../components/HeroSection.css';
-import './Menu.css';
+import './Startpage.css';
 
-class Menu extends React.Component {
+class Startpage extends React.Component {
   display_content(){
     var spinner_div = document.getElementById("spinner");
     spinner_div.className = "hidden";
@@ -67,5 +67,5 @@ class Menu extends React.Component {
     }
 }
 
-export default Menu;
+export default Startpage;
 
