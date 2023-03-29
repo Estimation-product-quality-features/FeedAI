@@ -2,7 +2,6 @@ import './App.css';
 import React from "react";
 
 // #### PAGES ####
-import Add from './pages/Add/add';
 import AddEvaluation from './pages/AddEvaluation/addEvaluation';
 import LiveProd from "./components/LiveProd";
 import Menu from "./pages/Menu/Menu";
@@ -18,7 +17,6 @@ var App = () => {
    <Switch>
      <Route path ='/' exact component={Menu} />
      <Route path ='/menu' exact component={Menu} />
-     <Route path ='/add' exact component={Add} />
      <Route path = '/add-Evaluation' component ={AddEvaluation}/>
      <Route path ="/live" exact component={LiveProd} />
      <Route path ='/Wiki' exact component={Wiki} />
