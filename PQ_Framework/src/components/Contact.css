@@ -17,6 +17,7 @@ body {
 }
 .left {
   margin-left: 24.5%;
+  
   /* padding-left: 50%; 250px; */
   font-size: x-large;
   color: #fff;
@@ -33,12 +34,20 @@ body {
 div{
 }
 .text-center {
-  margin-left: 35%;
   text-align: center;
+  margin-left: 30%;
+  
 }
 .display-inline {
     display: inline-block;
 }
+h2 {
+  text-align: left;
+  margin-left: 20%;
+  font-size: x-large;
+  color: #fff;
+}
+
 p {
   text-align: left;
 }

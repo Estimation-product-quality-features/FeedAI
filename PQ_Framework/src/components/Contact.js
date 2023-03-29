@@ -21,8 +21,9 @@ class Contact extends React.Component {
 
             <div>
                 <div>
-                <h2 className="left">Supervisor:</h2>
+                
                 <div className="text-center">
+                <h2>Supervisor:</h2>
                 <p>
                 M.Sc. Maite Alvela works as research associate for the Institute <br/>
                 of Integrated Product Developement (BIK) at the University of Bremen. <br/>
@@ -40,8 +41,10 @@ class Contact extends React.Component {
                 </p>
 
                 </div>
-                <h2 className="leftStudent">Student:</h2>
+
+                
                 <div className="text-center">
+                <h2>Student:</h2>
                 <p>
                     Hannes Gelbhardt is doing his master with a focus on AI in computer science <br/> 
                     at the University of Bremen and works at the BIK as research assistant<br/> 
