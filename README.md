@@ -61,7 +61,7 @@ In order to run the webpage locally, you can first clone the repository and then
 > npm install 
 > npm start  
 
-For the deployment of firebase build the production optimized webpage using  
+For the deployment of firebase build a production optimized webpage using  
 > npm run build 
 
 For deploying of the webpage to firebase
