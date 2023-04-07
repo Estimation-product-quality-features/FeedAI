@@ -64,8 +64,7 @@ In order to run the webpage locally, you can first clone the repository and then
 For the deployment of firebase build a production optimized webpage using  
 > npm run build 
 
-For deploying of the webpage to firebase
-Login to your firebase account  
+For deploying the webpage to firebase, please login to your firebase  
 > ``` firebase login ``` 
 
 Follow the link and enter your credentials associated with firebase. The next step is to initialize firebase hosting using  
