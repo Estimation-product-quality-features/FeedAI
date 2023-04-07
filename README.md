@@ -10,8 +10,8 @@ After grinding, samples of produced flour are evaluated on its particle size usi
 
 ## About
 ProductQualityAI consists of two packages: 
-*  The package PQ_AImodels handles the deep learning image processing code for model creation. The models are created in Python3 and use mainly Tensorflow and its APIs ([TF API](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1.md)) and comulative counting mode modules [TF counting API](https://github.com/ahmetozlu/tensorflow_object_counting_api).
-*  The package PQ_Framework contains the design of a webpage, mainly in JS, which lets you run different image processing models in near real time, as well as visualize and download its outputs in a simple form. The framework was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and Firebase running in a docker image to provide security and to help to build, run and deploy successfully models in the webpage. 
+*  The package PQ_AImodels handles the deep learning image processing code for model creation. The models are created in Python3 and use mainly Tensorflow and its APIs ([TF API](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1.md)) and comulative counting mode modules ([TF counting API](https://github.com/ahmetozlu/tensorflow_object_counting_api)).
+*  The package PQ_Framework contains the design of a webpage, mainly in JS, which lets you run different image processing models in near real time, as well as visualize and download its outputs in a simple form. The framework was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Firebase](https://firebase.google.com/running) in a docker image to provide security and to help to build, run and deploy successfully models in the webpage. 
 
 ## 🧰 Requirements 
 
