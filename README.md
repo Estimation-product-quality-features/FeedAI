@@ -1,8 +1,8 @@
 # ProductQualityAI: Product Quality Tracking Tool on the Example of Agri-Food Industries 🌾 
 
-### An intuitive and helpful software tool for estimating the product quality in industrial processes. As a case study, the production of flour in the context of the compound feed industry is shown.
+### An intuitive and helpful software tool for estimating the product quality in process industries. As a case study, the production of flour in the context of the compound feed industry is shown.
 The compound feed industry can produce many feed mixtures up to many different ingredients. Ingredients as agricultural raw materials, such as maize and wheat, are to be processed in these industries. Under rapidly and strongly fluctuating input raw materials and changing recipes, the condition of a process has to be continually tuned by process operators to satisfy the quality requirements. Flour is one popular feed due to its balanced nutrional nature and availability in various forms, for instance, in pellets. The schredding of natural raw materials leads to the required flour structure, which is relevant for further processing, such as mixing and pelleting, and ultimative relevant for the animal health.
-After milling, samples of the flour produced in this use case are evaluated on its particle size using deep learning algorithms. In this repo, we develop a quality traking tool that automatically detects, classifies and counts partially crushed and uncrushed seeds on images taken from the produced flour, so that engineers can subsequently use these results for evaluating the flour quality and adjusting better the mill parameters in future production charges. 
+After grinding, samples of produced flour are evaluated on its particle size using deep learning image processing methods. In this repo, we develop a quality traking tool that automatically detects, classifies and counts partially ground and unground seeds on image frames taken from the produced flour, so that engineers can subsequently use these results for evaluating the flour quality and adjusting better the grounding machine parameters in future production charges. 
 
 <br>
 <img src="./PQ_Framework/public/images/webpage.gif"/>
@@ -57,31 +57,28 @@ python object_detection/builders/model_builder_tf1_test.py
 ```
 
 ### PQ_Framework
-The easiest way to run the app locally is to clone the repository and run the node package manager via  
-> npm install
-
-followed by  
+In order to run the webpage locally, you can first clone the repository and then run the node package manager via: 
+> npm install 
 > npm start  
 
-For the deployment with firebase first build the production optimized site using  
+For the deployment of firebase build the production optimized webpage using  
 > npm run build 
 
-### Deploying the App to firebase
-
+For deploying of the webpage to firebase
 Login to your firebase account  
 > ``` firebase login ``` 
 
-Follow the displayed link and enter the credentials of the google account associated with firebase. The next step is to initialize firebase hosting using  
+Follow the link and enter your credentials associated with firebase. The next step is to initialize firebase hosting using  
 
 > ``` firebase init hosting ```
 
-Follow the instructions given by firebase and choose the corresponding firebase projekt you want to deploy to. Note that as "public directory" **build** has to be specified. Additionally the page should be rewritten as single page. When ask to overwrite existing files the answer is "No".  
+Follow the instructions and choose the PQFramework as the projekt you want to deploy to. Note that as "public directory" **build** has to be specified. Additionally the page should be rewritten as single page. When asking to overwrite existing files, the answer is "No".  
 
-Finally deploy your webapp using 
+Finally deploy the webpage using 
 
 > ``` firebase deploy --only hosting ```
 
-A url should be displayed where you can visit your site online.
+A url should be displayed which you can use to visit your webpage online in.
 
 ## Documentation
 Our SoftwareX paper: "" provides a concise description of the software. 
