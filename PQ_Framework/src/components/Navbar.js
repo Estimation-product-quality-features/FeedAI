@@ -51,7 +51,7 @@ function Navbar() {
                   </li>
                   <li className='nav-item'>
                     <NavLink to='/live' className='nav-links' activeStyle={{background: "rgb(106, 134, 115)"}} onClick={closeMobileMenu}>  
-                    <h3>Live Production</h3>
+                    <h3>Production Run</h3>
                     </NavLink>
                   </li>
                   <li className='nav-item'>
