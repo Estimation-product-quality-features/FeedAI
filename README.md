@@ -80,7 +80,7 @@ Finally deploy the webpage using
 A url should be displayed which you can use to visit your webpage online in.
 
 ## Documentation
-Our SoftwareX paper: "" provides a concise description of the software. 
+Our SoftwareX paper: "ProQualAI: A software to compute qualitative and quantitative product features in process industries using deep learning image processing algorithms" provides a concise description of the software. 
 The code documentation is provided along the relevant code lines.
 
 ## Contributing
