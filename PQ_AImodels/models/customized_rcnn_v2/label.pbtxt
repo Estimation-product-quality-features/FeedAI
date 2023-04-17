@@ -1,0 +1,19 @@
+item {
+  id: 1
+  name: 'Mais'
+}
+
+item {
+  id: 2
+  name: 'Roggen'
+}
+
+item {
+  id: 3
+  name: 'Triticale'
+}
+
+item {
+  id: 4
+  name: 'Weizen'
+}
