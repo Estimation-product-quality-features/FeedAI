@@ -28,7 +28,8 @@ DEALINGS IN THE SOFTWARE.
 Prepares a tensorflow graph for inference using model
 configuration and a trained checkpoint. Outputs inference
 graph, associated checkpoint files, a frozen inference graph and a
-SavedModel (please see https://tensorflow.github.io/serving/serving_basic.html).
+SavedModel (please download https://github.com/tensorflow/models/tree/master/research/object_detection 
+and https://tensorflow.github.io/serving/serving_basic.html for further details).
 
 The inference graph contains one of three input nodes depending on the user
 specified option.
