@@ -223,7 +223,3 @@ def create_category_index_from_labelmap(label_map_path, use_display_name=True):
   categories = create_categories_from_labelmap(label_map_path, use_display_name)
   return create_category_index(categories)
 
-
-def create_class_agnostic_category_index():
-  """Creates a category index with a single `object` class."""
-  return {1: {'id': 1, 'name': 'object'}}
