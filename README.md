@@ -1,4 +1,4 @@
-# ProductQualityAI: Product Quality Tracking Tool on the Example of Agri-Food Industries 🌾 
+# ProQualAI: Product Quality Tracking Tool on the Example of Agri-Food Industries 🌾 
 
 ### An intuitive and helpful software tool for estimating the product quality in process industries. As a case study, the production of flour in the context of the compound feed industry is shown.
 The compound feed industry can produce many feed mixtures up to many different ingredients. Ingredients as agricultural raw materials, such as maize and wheat, are to be processed in these industries. Under rapidly and strongly fluctuating input raw materials and changing recipes, the condition of a process has to be continually tuned by process operators to satisfy the quality requirements. Flour is one popular feed due to its balanced nutrional nature and availability in various forms, for instance, in pellets. The schredding of natural raw materials leads to the required flour structure, which is relevant for further processing, such as mixing and pelleting, and ultimative relevant for the animal health.
@@ -9,7 +9,7 @@ After grinding, samples of produced flour are evaluated on its particle size usi
 <br>
 
 ## About
-ProductQualityAI consists of two packages: 
+ProQualAI consists of two packages: 
 *  The package PQ_AImodels handles the deep learning image processing code for model creation. The models are created in Python3 and use mainly Tensorflow and its APIs ([TF API](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1.md)) and comulative counting mode modules ([TF counting API](https://github.com/ahmetozlu/tensorflow_object_counting_api)).
 *  The package PQ_Framework contains the design of a webpage, mainly in JS, which lets you run different image processing models in near real time, as well as visualize and download its outputs in a simple form. The framework was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Firebase](https://firebase.google.com/running) in a docker image to provide security and to help to build, run and deploy successfully models in the webpage. 
 
@@ -80,7 +80,7 @@ Finally deploy the webpage using
 A url should be displayed which you can use to visit your webpage online in.
 
 ## Documentation
-Our SoftwareX paper: "" provides a concise description of the software. 
+Our SoftwareX paper: "ProQualAI: A software to compute qualitative and quantitative product features in process industries using deep learning image processing algorithms" provides a concise description of the software. 
 The code documentation is provided along the relevant code lines.
 
 ## Contributing
@@ -90,7 +90,7 @@ Pull requests for minor changes are welcome. For major changes, please open an i
 * Fork: If you want to work on an issue yourself please fork the repository, then develop the feature in your copy of the repository and finally file a pull request to merge it into our repository.
 
 ## Cite
-If you are using FeedAI in your academic work please cite it by referencing our SoftwareX paper:
+If you are using ProQualAI in your academic work please cite it by referencing our SoftwareX paper:
 ...
 
 ## License
