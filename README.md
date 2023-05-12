@@ -5,7 +5,7 @@ The compound feed industry can produce many feed mixtures up to many different i
 After grinding, samples of produced flour are evaluated on its particle size using deep learning image processing methods. In this repo, we develop a quality traking tool that automatically detects, classifies and counts partially ground and unground seeds on image frames taken from the produced flour, so that engineers can subsequently use these results for evaluating the flour quality and adjusting better the grounding machine parameters in future production charges. 
 
 <br>
-<img src="./PQ_Framework/public/images/webpage.gif"/>
+<img src="./PQ_Framework/public/images/webpage.gifd"/>
 <br>
 
 ## About
