@@ -90,7 +90,7 @@ Pull requests for minor changes are welcome. For major changes, please open an i
 * Fork: If you want to work on an issue yourself please fork the repository, then develop the feature in your copy of the repository and finally file a pull request to merge it into our repository.
 
 ## Cite
-If you are using ProQualAI in your academic work please cite it by referencing our SoftwareX paper:
+If you are using ProQualAI in your academic work please cite it by referencing our SoftwareX paper: "ProQualAI: A software to compute qualitative and quantitative product features in process industries using deep learning image processing algorithms"
 ...
 
 ## License
